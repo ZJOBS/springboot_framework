@@ -1,0 +1,76 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_system_dictionary" author="zhang">
+        <sql>
+            CREATE TABLE `system_dictionary` (
+            `dict_id` varchar(20) NOT NULL,
+            `code` varchar(45) NOT NULL,
+            `value` varchar(45) DEFAULT NULL,
+            `activating` tinyint(1) NOT NULL DEFAULT 0,
+            `name` varchar(45) DEFAULT NULL,
+            `parent_id` varchar(20) DEFAULT '0',
+            PRIMARY KEY (`dict_id`),
+            UNIQUE KEY `id_UNIQUE` (`dict_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        </sql>
+    </changeSet>
+    
+    <changeSet id="add_system_dictionary" author="zhang">
+        <insert tableName="system_dictionary">
+            <column></column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="create_system_admin" author="zhang">
+        <sql>
+            CREATE TABLE `system_admin` (
+            `admin_id` varchar(20) NOT NULL,
+            `name` varchar(20) NOT NULL COMMENT '管理员名称',
+            `avatar` varchar(20) DEFAULT NULL,
+            `activating` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否激活，0禁用、1启用',
+            `password` varchar(120) NOT NULL COMMENT '管理员登入密码',
+            `description` text DEFAULT NULL COMMENT '说明',
+            `create_ datetime` timestamp NULL DEFAULT current_timestamp(),
+            `update_ datetime` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+            PRIMARY KEY (`admin_id`),
+            UNIQUE KEY `id_UNIQUE` (`admin_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        </sql>
+    </changeSet>
+
+    <changeSet id="add_system_admin" author="zhang">
+        <insert tableName="system_admin">
+            <column name="admin_id" value="1"></column>
+            <column name="name" value="zhangjie"></column>
+            <column name="activating" value="1"></column>
+            <column name="password" value="c5c36892a1af06cb6ec9"></column>
+            <column name="description" value="系统初始账户"></column>
+        </insert>
+        <insert tableName="system_admin">
+            <column name="admin_id" value="2"></column>
+            <column name="name" value="ZJOBS"></column>
+            <column name="activating" value="1"></column>
+            <column name="password" value="c5c36892a1af06cb6ec9"></column>
+            <column name="description" value="系统初始账户"></column>
+        </insert>
+        <insert tableName="system_admin">
+            <column name="admin_id" value="324686962734661632"></column>
+            <column name="name" value="ZJOBS_0射手"></column>
+            <column name="activating" value="1"></column>
+            <column name="password" value="c5c36892a1af06cb6ec9"></column>
+            <column name="description" value="系统初始账户"></column>
+        </insert>
+        <insert tableName="system_admin">
+            <column name="admin_id" value="451894153022935040"></column>
+            <column name="name" value="上海理工"></column>
+            <column name="activating" value="1"></column>
+            <column name="password" value="c5c36892a1af06cb6ec9"></column>
+            <column name="description" value="上理毕业设计"></column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_product" author="zhang">
+        <sql>
+            DROP TABLE IF EXISTS `product`;
+            CREATE TABLE `product` (
+            `productId` varchar(20) NOT NULL,
+            `name` varchar(20) DEFAULT NULL,
+            `type` tinyint(4) DEFAULT NULL,
+            `image` varchar(32) DEFAULT NULL,
+            `state` varchar(2) DEFAULT '0',
+            PRIMARY KEY (`productId`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
