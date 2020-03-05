@@ -14,10 +14,15 @@
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.15</fast-json.version>
+        <hutool.version>5.1.5</hutool.version>
+        <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
+        <JieZhang.version>0.0.1-SNAPSHOT</JieZhang.version>
+        <tomcat-embed-jasper.versoon>9.0.17</tomcat-embed-jasper.versoon>
         <!--1.2.66-->
     </properties>
     <modules>
         <module>console</module>
+        <module>base</module>
     </modules>
 
     <!--    <parent>-->
@@ -35,6 +40,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-freemarker</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>springloaded</artifactId>
@@ -46,6 +65,48 @@
                 <version>${fast-json.version}</version>
             </dependency>
 
+            <!--jsp start  -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-jasper</artifactId>
+                <version>${tomcat-embed-jasper.versoon}</version>
+            </dependency>
+
+            <!--jsp end  -->
+
+            <!--hutool核心-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-core</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!--hutool加解密工具-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-crypto</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+
+
+
+
+            <dependency>
+                <groupId>JieZhang</groupId>
+                <artifactId>base</artifactId>
+                <version>${JieZhang.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <!--父工程中定义，子工程中就可以不用定义，统一jdk版本-->
