@@ -3,7 +3,7 @@ package jiezhang.base.mapper;
 
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
-import sun.jvm.hotspot.debugger.Page;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +16,7 @@ import java.util.Map;
  * @author ZhangJie
  * @date 2018/02/09
  */
+@Mapper
 public interface BaseMapper<T extends BaseEntity, E extends Exception> {
 
 

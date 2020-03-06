@@ -2,6 +2,7 @@ package jiezhang.base.mapper;
 
 
 import jiezhang.base.entity.db.Dict;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  *
  * @author ZJOBS
  */
+@Mapper
 public interface DictMapper extends BaseMapper<Dict, Exception> {
     /**
      * 查询所有字典

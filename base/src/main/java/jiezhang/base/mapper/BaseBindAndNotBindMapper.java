@@ -3,6 +3,7 @@ package jiezhang.base.mapper;
 
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Map;
  * @author ZhangJie
  * @date 2018/02/08
  */
+@Mapper
 public interface BaseBindAndNotBindMapper<F extends BaseEntity, T extends BaseEntity, E extends Exception> {
 
     /**
