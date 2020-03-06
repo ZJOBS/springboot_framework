@@ -13,18 +13,18 @@ import java.util.Date;
 @Controller
 public class TestController {
 
-    @Value("${image_server}")
-    private String val;
+//    @Value("${image_server}")
+//    private String val;
 
-    @RequestMapping("/index")
-    public String index(Model model) {
-        model.addAttribute("name", "jsp张杰");
-        return "index";
-    }
+//    @RequestMapping("/index")
+//    public String index(Model model) {
+//        model.addAttribute("name", "jsp张杰");
+//        return "index";
+//    }
 
-    @RequestMapping("/show")
-    public String show(Model model) {
-        model.addAttribute("name", "ftl张杰");
-        return "show";
-    }
+//    @RequestMapping("/show")
+//    public String show(Model model) {
+//        model.addAttribute("name", "ftl张杰");
+//        return "show";
+//    }
 }
