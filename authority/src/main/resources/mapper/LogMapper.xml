@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jiezhang.mapper.LogMapper">
+    <insert id="insertEntity" parameterType="java.util.Map">
+        INSERT INTO
+        <include refid="table_name"/>
+        (log_id,admin_id,module_name,method,response_date,ip,date_time,result)
+        VALUES
+        (#{logId},#{adminId},#{moduleName},#{method},#{responseDate},#{ip},#{dateTime},#{result})
+    </insert>
+    <delete id="deleteEntity" parameterType="java.util.Map">
+        delete FROM
+        <include refid="table_name"/>
+        where
+        log_id = #{logId}
+    </delete>
+
+    <update id="updateEntity" parameterType="java.util.Map">
+        UPDATE
+        <include refid="table_name"/>
+        <include refid="set"/>
+        where dict_id=#{logId}
+    </update>
+
+    <select id="selectEntity" parameterType="java.util.Map"
+            resultType="jiezhang.entity.db.Log">
+        SELECT
+        <include refid="result_base"/>
+        FROM
+        <include refid="table_name"/>
+        <include refid="where"/>
+    </select>
+
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+            resultType="jiezhang.entity.db.Log">
+        SELECT * FROM
+        <include refid="table_name"/>
+        <where>
+            <if test="params.logId !=null and params.logId != ''">
+                dict_id = #{params.logId}
+            </if>
+            <if test="params.adminId !=null and params.adminId != ''">
+                AND admin_id = #{params.adminId}
+            </if>
+            <if test="params.moduleName !=null and params.moduleName != ''">
+                AND module_name = #{params.moduleName}
+            </if>
+            <if test="params.method !=null and params.method != ''">
+                AND method = #{params.method}
+            </if>
+            <if test="params.responseDate !=null and params.responseDate != ''">
+                AND response_date = #{params.responseDate}
+            </if>
+            <if test="params.ip !=null and params.ip != ''">
+                AND ip = #{params.ip}
+            </if>
+            <if test="params.dateTime !=null and params.dateTime != ''">
+                AND date_time = #{params.dateTime}
+            </if>
+            <if test="params.result !=null and params.result != ''">
+                AND result = #{params.result}
+            </if>
+        </where>
+        <if test="params.orderColumn != null and params.orderColumn != ''">
+            order by ${params.orderColumn} ${params.orderDir}
+        </if>
+    </select>
+
+    <sql id="result_base">
+        log_id,admin_id,module_name,method,responseDate,ip,date_time,result
+    </sql>
+    <sql id="where">
+        <where>
+            <if test="logId !=null and logId != ''">
+                dict_id = #{logId}
+            </if>
+            <if test="adminId !=null and adminId != ''">
+                AND admin_id = #{adminId}
+            </if>
+            <if test="moduleName !=null and moduleName != ''">
+                AND module_name = #{moduleName}
+            </if>
+            <if test="method !=null and method != ''">
+                AND method = #{method}
+            </if>
+            <if test="responseDate !=null and responseDate != ''">
+                AND response_date = #{responseDate}
+            </if>
+            <if test="ip !=null and ip != ''">
+                AND ip = #{ip}
+            </if>
+            <if test="dateTime !=null and dateTime != ''">
+                AND date_time = #{dateTime}
+            </if>
+            <if test="result !=null and result != ''">
+                AND result = #{result}
+            </if>
+        </where>
+    </sql>
+    <sql id="set">
+        <set>
+            <if test="adminId !=null">
+                admin_id = #{adminId},
+            </if>
+            <if test="moduleName !=null">
+                module_name = #{moduleName},
+            </if>
+            <if test="method !=null">
+                method = #{method},
+            </if>
+            <if test="responseDate !=null">
+                response_date = #{responseDate},
+            </if>
+            <if test="ip !=null">
+                ip = #{ip},
+            </if>
+            <if test="dateTime !=null">
+                date_time = #{dateTime},
+            </if>
+            <if test="result !=null">
+                result = #{result}
+            </if>
+        </set>
+    </sql>
+    <sql id="table_name">system_log</sql>
+</mapper>

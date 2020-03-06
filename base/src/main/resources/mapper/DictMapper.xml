@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jiezhang.base.mapper.DictMapper">
+    <insert id="insertEntity" parameterType="java.util.Map">
+        INSERT INTO
+        <include refid="table_name"/>
+        (dict_id,code,value,activating,name,parent_id)
+        VALUES
+        (#{dictId},#{code},#{value},#{activating},#{name},#{parentId})
+    </insert>
+    <delete id="deleteEntity" parameterType="java.util.Map">
+        delete FROM
+        <include refid="table_name"/>
+        where
+        dict_id = #{dictId}
+    </delete>
+
+    <update id="updateEntity" parameterType="java.util.Map">
+        UPDATE
+        <include refid="table_name"/>
+        <include refid="set"/>
+        where dict_id=#{dictId}
+    </update>
+
+    <select id="selectEntity" parameterType="java.util.Map"
+            resultType="jiezhang.base.entity.db.Dict">
+        SELECT
+        <include refid="result_base"/>
+        FROM
+        <include refid="table_name"/>
+        <include refid="where"/>
+    </select>
+
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.base.entity.db.Dict">
+        SELECT * FROM
+        <include refid="table_name"/>
+        <where>
+            <if test="params.dictId !=null and params.dictId != ''">
+                dict_id = #{params.dictId}
+            </if>
+            <if test="params.parentId !=null and params.parentId != ''">
+                AND parent_id = #{params.parentId}
+            </if>
+            <if test="params.code !=null and params.code != ''">
+                AND code = #{params.code}
+            </if>
+            <if test="params.value !=null and params.value != ''">
+                AND value = #{params.value}
+            </if>
+            <if test="params.activating !=null and params.activating != ''">
+                AND activating = #{params.activating}
+            </if>
+            <if test="params.name !=null and params.name != ''">
+                AND name = #{params.name}
+            </if>
+        </where>
+        <if test="params.orderColumn != null and params.orderColumn != ''">
+            order by ${params.orderColumn} ${params.orderDir}
+        </if>
+    </select>
+
+    <select id="selectAll" resultType="jiezhang.base.entity.db.Dict">
+        SELECT * FROM
+        <include refid="table_name"/>
+    </select>
+
+    <sql id="result_base">
+        dictId,code,value,activating,name,parentId
+    </sql>
+    <sql id="where">
+        <where>
+            <if test="dictId !=null and dictId != ''">
+                dict_id = #{dictId}
+            </if>
+            <if test="parentId !=null and parentId != ''">
+                AND parent_id = #{parentId}
+            </if>
+            <if test="code !=null and code != ''">
+                AND code = #{code}
+            </if>
+            <if test="value !=null and value != ''">
+                AND value = #{value}
+            </if>
+            <if test="activating !=null and activating != ''">
+                AND activating = #{activating}
+            </if>
+            <if test="name !=null and name != ''">
+                AND name = #{name}
+            </if>
+        </where>
+    </sql>
+    <sql id="set">
+        <set>
+            <if test="parentId !=null">
+                parent_id = #{parentId},
+            </if>
+            <if test="code !=null">
+                code = #{code},
+            </if>
+            <if test="value !=null">
+                value = #{value},
+            </if>
+            <if test="activating !=null">
+                activating = #{activating},
+            </if>
+            <if test="name !=null">
+                name = #{name}
+            </if>
+        </set>
+    </sql>
+    <sql id="table_name">system_dictionary</sql>
+</mapper>

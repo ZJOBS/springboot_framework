@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jiezhang.mapper.AdminRoleMapper">
+    <select id="queryBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
+        SELECT sr.*
+        FROM system_role sr
+        LEFT JOIN system_admin_role sar ON sr.role_id = sar.role_id
+        LEFT JOIN system_admin sa ON sa.admin_id = sar.admin_id
+        <where>
+            sa.admin_id = #{params.adminId}
+        </where>
+    </select>
+
+    <select id="queryNotBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
+        SELECT *
+        FROM system_role sr
+        WHERE NOT exists(
+            SELECT *
+            FROM (SELECT sr.*
+                  FROM system_role sr
+                    LEFT JOIN system_admin_role sar ON sr.role_id = sar.role_id
+                    LEFT JOIN system_admin sa ON sa.admin_id = sar.admin_id
+                  WHERE sar.admin_id = #{params.adminId}) aaa
+            WHERE sr.role_id = aaa.role_id
+)
+    </select>
+
+    <insert id="insertList" parameterType="java.util.List">
+        INSERT INTO system_admin_role (admin_role_id, admin_id,role_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.adminRoleId}, #{item.adminId},#{item.roleId})
+        </foreach>
+    </insert>
+
+    <delete id="removeList" parameterType="java.util.Map">
+        DELETE FROM system_admin_role WHERE admin_id = #{adminId}
+        AND role_id IN
+        <foreach collection="list" item="item" index="index" separator="," open="(" close=")">
+            (#{item})
+        </foreach>
+    </delete>
+</mapper>

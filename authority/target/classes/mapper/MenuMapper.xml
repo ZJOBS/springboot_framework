@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jiezhang.mapper.MenuMapper">
+    <insert id="insertEntity" parameterType="java.util.Map">
+        INSERT INTO
+        <include refid="table_name"/>
+        (menu_id,parent_id,name,url,activating,image,leaf)
+        VALUE(#{menuId},#{parentId},#{name},#{url},#{activating},#{image},#{leaf})
+    </insert>
+
+    <update id="updateEntity" parameterType="java.util.Map">
+        UPDATE
+        <include refid="table_name"/>
+        <set>
+            <if test="parentId != null">parent_id =#{parentId},</if>
+            <if test="name != null">name =#{name},</if>
+            <if test="url != null">url =#{url},</if>
+            <if test="activating != null">activating =#{activating},</if>
+            <if test="image != null">image =#{image},</if>
+            <if test="leaf != null">leaf =#{leaf}</if>
+        </set>
+        where menu_id=#{menuId}
+    </update>
+
+    <select id="selectEntity" parameterType="java.util.Map" resultType="jiezhang.entity.db.Menu">
+        SELECT * FROM
+        <include refid="table_name"/>
+        <where>
+            <if test="menuId!=null and menuId!=''">
+                menu_id = #{menuId}
+            </if>
+            <if test="name!=null and name!=''">
+                AND name = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Menu">
+        SELECT * FROM
+        <include refid="table_name"/>
+        <where>
+            <if test="params.menuId!=null and params.menuId!=''">
+                menu_id = #{params.menu_id}
+            </if>
+            <if test="params.parentId!=null and params.parentId!=''">
+                AND parent_id = #{params.parent_id}
+            </if>
+            <if test="params.name!=null and params.name!=''">
+                AND name = #{params.name}
+            </if>
+            <if test="params.url!=null and params.url!=''">
+                AND url = #{params.url}
+            </if>
+            <if test="params.activating!=null and params.activating!=''">
+                AND activating = #{params.activating}
+            </if>
+            <if test="params.image!=null and params.image!=''">
+                AND image = #{params.image}
+            </if>
+            <if test="params.leaf!=null and params.leaf!=''">
+                AND leaf = #{params.leaf}
+            </if>
+        </where>
+        <if test="params.orderColumn != null and params.orderColumn != ''">
+            order by ${params.orderColumn} ${params.orderDir}
+        </if>
+    </select>
+
+    <select id="getList" parameterType="java.util.Map" resultType="jiezhang.entity.db.Menu">
+        SELECT * FROM
+        <include refid="table_name"/>
+    </select>
+
+    <select id="selectMenuByAdminId" parameterType="java.util.Map" resultType="jiezhang.entity.db.Menu">
+        select distinct sm.* from system_menu sm
+        left join system_role_menu srm on  srm.menu_id=sm.menu_id
+        left join system_admin_role sar on   sar.role_id=srm.role_id
+        left join system_admin sa on sa.admin_id = sar.admin_id
+        where sa.admin_id = #{adminId}
+    </select>
+
+    <delete id="deleteEntity" parameterType="java.util.Map">
+        DELETE FROM
+        <include refid="table_name"/>
+        WHERE
+        menu_id = #{menuId}
+    </delete>
+    <sql id="table_name">
+          system_menu
+    </sql>
+</mapper>

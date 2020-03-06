@@ -16,17 +16,6 @@ public class TestController {
     @Value("${image_server}")
     private String val;
 
-    @RequestMapping("/")
-    @ResponseBody
-    public Result test() {
-        Persion persion = new Persion();
-        persion.setName("张");
-        persion.setAge(11);
-        persion.setDate(new Date());
-        int i = 1 / 0;
-        return Result.ofSuccess(persion);
-    }
-
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("name", "jsp张杰");
