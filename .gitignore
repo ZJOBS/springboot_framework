@@ -13,6 +13,7 @@ local.properties
 .buildpath
 .springBeans
 .factorypath
+.class
 
 ######################
 # Intellij
