@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
     <script>
         /*是否可以变为调用数据字典生成此方法*/
@@ -53,10 +53,10 @@
 
                                     <zj:tableColumn id="role" key="roleId" defaultOperation="YES"
                                                     search="#search"
-                                                    queryUrl="/queryRole.do"
-                                                    addUrl="/addRole.do"
-                                                    editUrl="/updateRole.do"
-                                                    deleteUrl="/deleteRole.do"
+                                                    queryUrl="/queryRole"
+                                                    addUrl="/addRole"
+                                                    editUrl="/updateRole"
+                                                    deleteUrl="/deleteRole"
                                                     columnTitle="编号,名称,是否启用"
                                                     columnName="{'mData': 'roleId'},{'mData': 'name'},{'mData': 'activating','type':'checkbox'}"
                                                     columnFormat="{'aTargets': 2, 'mRender': formatActivating}"
@@ -84,7 +84,7 @@
         </div>
     </div>
     <div id="dialog-confirm" class="hide">
-        <jsp:include page="/WEB-INF/role/form.jsp"/>
+        <jsp:include page="/jsp/role/form.jsp"/>
     </div>
 
     <div id="dialog-bindAndUnbind">

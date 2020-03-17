@@ -5,6 +5,7 @@ import jiezhang.base.annotation.PrimaryTableId;
 import jiezhang.base.utils.DataConversionUtil;
 import jiezhang.base.utils.JsonUtil;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @date 9:36 下午 2020/3/5
  * @return
  */
-public class BaseEntity {
+public class BaseEntity implements Serializable {
     protected String createUserName;
 
     protected String updateUserName;

@@ -13,7 +13,7 @@
     <tag>
         <description>tableColumn</description>
         <name>tableColumn</name>
-        <tag-class>zjobs.web.tag.TableColumn</tag-class>
+        <tag-class>jiezhang.tag.web.TableColumn</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>id</name>
@@ -81,7 +81,7 @@
     <tag>
         <description>relationtable</description>
         <name>relationtable</name>
-        <tag-class>zjobs.web.tag.RelationTable</tag-class>
+        <tag-class>jiezhang.tag.web.RelationTable</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>id</name>
@@ -118,7 +118,7 @@
     <tag>
         <description>accordion</description>
         <name>accordion</name>
-        <tag-class>zjobs.web.tag.Accordion</tag-class>
+        <tag-class>jiezhang.tag.web.Accordion</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>id</name>
@@ -130,7 +130,7 @@
     <tag>
         <description>bindAndUnbind</description>
         <name>bindAndUnbind</name>
-        <tag-class>zjobs.web.tag.BindAndUnBind</tag-class>
+        <tag-class>jiezhang.tag.web.BindAndUnBind</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>id</name>
@@ -193,7 +193,7 @@
     <tag>
         <description>input</description>
         <name>input</name>
-        <tag-class>zjobs.web.tag.Input</tag-class>
+        <tag-class>jiezhang.tag.web.Input</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -217,7 +217,7 @@
     <tag>
         <description>select</description>
         <name>select</name>
-        <tag-class>zjobs.web.tag.Select</tag-class>
+        <tag-class>jiezhang.tag.web.Select</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -246,7 +246,7 @@
     <tag>
         <description>checkbox</description>
         <name>checkbox</name>
-        <tag-class>zjobs.web.tag.Checkbox</tag-class>
+        <tag-class>jiezhang.tag.web.Checkbox</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -269,7 +269,7 @@
     <tag>
         <description>radio</description>
         <name>radio</name>
-        <tag-class>zjobs.web.tag.Radio</tag-class>
+        <tag-class>jiezhang.tag.web.Radio</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -293,7 +293,7 @@
     <tag>
         <description>switch</description>
         <name>switch</name>
-        <tag-class>zjobs.web.tag.Switch</tag-class>
+        <tag-class>jiezhang.tag.web.Switch</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -313,7 +313,7 @@
     <tag>
         <description>file</description>
         <name>file</name>
-        <tag-class>zjobs.web.tag.UploadFile</tag-class>
+        <tag-class>jiezhang.tag.web.UploadFile</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>name</name>
@@ -341,7 +341,7 @@
             'decade' for the 10-year overview. Useful for date-of-birth datetimepickers
         </description>
         <name>datepicker</name>
-        <tag-class>zjobs.web.tag.DatePicker</tag-class>
+        <tag-class>jiezhang.tag.web.DatePicker</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <name>id</name>

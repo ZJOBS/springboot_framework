@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
-    <jsp:include page="/WEB-INF/common/index.jsp"></jsp:include>
+    <jsp:include page="/jsp/common/index.jsp"></jsp:include>
     <style type="text/css">
         @media screen and (max-width: 1366px) {
             html {
@@ -76,9 +76,9 @@
     <title>HOME</title>
 </head>
 <body class="no-skin">
-<jsp:include page="/WEB-INF/common/header/index.jsp"></jsp:include>
+<jsp:include page="/jsp/common/header/index.jsp"></jsp:include>
 <div class="main-container ace-save-state" id="main-container">
-    <jsp:include page="/WEB-INF/common/menu/index.jsp"></jsp:include>
+    <jsp:include page="/jsp/common/menu/index.jsp"></jsp:include>
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-activating" id="breadcrumbs">
@@ -100,7 +100,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="/WEB-INF/common/footer/index.jsp"></jsp:include>
+<jsp:include page="/jsp/common/footer/index.jsp"></jsp:include>
 <%--<jsp:include page="/WEB-INF/common/menu/login.jsp"></jsp:include>--%>
 </body>
 </html>

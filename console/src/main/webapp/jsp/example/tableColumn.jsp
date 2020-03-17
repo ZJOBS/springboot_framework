@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
     <script>
         // /*是否可以变为调用数据字典生成此方法*/
         // function formatState(data, type, full) {
@@ -32,10 +32,10 @@
             <div class="page-content">
                 <zj:tableColumn id="menutest" key="menuId" defaultOperation="YES"
                                 search="#search"
-                                queryUrl="/queryMenu.do"
-                                addUrl="/addMenu.do"
-                                editUrl="/updateMenu.do"
-                                deleteUrl="/deleteMenu.do"
+                                queryUrl="/queryMenu"
+                                addUrl="/addMenu"
+                                editUrl="/updateMenu"
+                                deleteUrl="/deleteMenu"
                                 columnTitle="编号,父编号,名称,地址,图片,是否启用,是否子节点"
                                 columnName="{'mData': 'menuId'},{'mData': 'parentId'},{'mData': 'name'},{'mData': 'url'},{'mData': 'image'},{'mData': 'activating','type':'checkbox'},{'mData': 'leaf','type':'checkbox'}"
                                 columnFormat="{'aTargets': 5, 'mRender': formatActivating},{'aTargets': 6, 'mRender': formatLeaf}"

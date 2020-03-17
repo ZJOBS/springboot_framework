@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
     <script>
         /*是否可以变为调用数据字典生成此方法*/
@@ -33,7 +33,7 @@
                 <div class="clearfix">
                     <div class="pull-right tableTools-container"></div>
                 </div>
-                <form class="form-horizontal" role="form" enctype="multipart/form-data" action="test.do">
+                <form class="form-horizontal" role="form" enctype="multipart/form-data" action="test">
                     <zj:select name="country" code="COUNTRY" text="国籍"/>
                 </form>
             </div><!-- /.page-content -->

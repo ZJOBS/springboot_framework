@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
     <script>
         /*是否可以变为调用数据字典生成此方法*/
@@ -58,10 +58,10 @@
                                     <%--dynamic-table--%>
 
                                     <zj:tableColumn id="product" key="productId" defaultOperation="YES"
-                                                    queryUrl="/queryProduct.do"
-                                                    addUrl="/addProduct.do"
-                                                    editUrl="/updateProduct.do"
-                                                    deleteUrl="/deleteProduct.do"
+                                                    queryUrl="/queryProduct"
+                                                    addUrl="/addProduct"
+                                                    editUrl="/updateProduct"
+                                                    deleteUrl="/deleteProduct"
                                                     columnTitle="产品编号,产品名称,类型,图片,状态"
                                                     columnFormat="{'aTargets': 4, 'mRender': formatState},{'aTargets': 3, 'mRender': formatImage}"
                                                     columnName="{'mData': 'productId'},{'mData': 'name'},{'mData': 'type'},{'mData': 'image'},{'mData': 'state','type':'checkbox'}"
@@ -88,7 +88,7 @@
         </div>
     </div>
     <div id="dialog-confirm" class="hide">
-        <jsp:include page="/WEB-INF/product/form.jsp"/>
+        <jsp:include page="/jsp/product/form.jsp"/>
     </div>
 </div><!-- /.main-container -->
 </body>

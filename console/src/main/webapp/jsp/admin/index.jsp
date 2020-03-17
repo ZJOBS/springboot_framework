@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
     <script>
         /*是否可以变为调用数据字典生成此方法*/
@@ -63,10 +63,10 @@
 
                                     <zj:tableColumn id="admin" key="adminId" defaultOperation="YES"
                                                     search="#search"
-                                                    queryUrl="/queryAdmin.do"
-                                                    addUrl="/addAdmin.do"
-                                                    editUrl="/updateAdmin.do"
-                                                    deleteUrl="/deleteAdmin.do"
+                                                    queryUrl="/queryAdmin"
+                                                    addUrl="/addAdmin"
+                                                    editUrl="/updateAdmin"
+                                                    deleteUrl="/deleteAdmin"
                                                     columnTitle="编号,姓名,头像,是否激活,描述"
                                                     columnName="{'mData': 'adminId'},{'mData': 'name'},{'mData': 'avatar'},{'mData': 'activating','type':'checkbox'},{'mData': 'description'}"
                                                     customOperation="showRole()"
@@ -94,7 +94,7 @@
         </div>
     </div>
     <div id="dialog-confirm" class="hide">
-        <jsp:include page="/WEB-INF/admin/form.jsp"/>
+        <jsp:include page="/jsp/admin/form.jsp"/>
     </div>
     <div id="dialog-bindAndUnbind">
         <zj:bindAndUnbind id="adminBindRole"
@@ -102,10 +102,10 @@
                           awakenPosition=".showRole"
                           keyName="adminId"
                           relationName="roleId"
-                          leftQueryUrl="/queryAdminBindRole.do"
-                          deleteUrl="/unbindAdminRole.do"
-                          rightQueryUrl="/queryAdminNotBindRole.do"
-                          addUrl="/bindAdminRole.do"
+                          leftQueryUrl="/queryAdminBindRole"
+                          deleteUrl="/unbindAdminRole"
+                          rightQueryUrl="/queryAdminNotBindRole"
+                          addUrl="/bindAdminRole"
                           columnTitle="编号,名称,是否启用"
                           columnName="{'mData': 'roleId'},{'mData': 'name'},{'mData': 'activating'}"
         />

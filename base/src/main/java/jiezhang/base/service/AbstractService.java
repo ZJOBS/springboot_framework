@@ -1,14 +1,11 @@
 package jiezhang.base.service;
 
-import cn.hutool.core.lang.Snowflake;
-import cn.hutool.core.util.IdUtil;
 import jiezhang.base.constant.BaseConstants;
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
 import jiezhang.base.mapper.BaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 

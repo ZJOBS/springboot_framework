@@ -20,7 +20,8 @@
     <!-- text fonts -->
     <link rel="stylesheet" href="${contextPath}/component/assets/css/fonts.googleapis.com.css">
     <!-- ace styles -->
-    <link rel="stylesheet" href="${contextPath}/component/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
+    <link rel="stylesheet" href="${contextPath}/component/assets/css/ace.min.css" class="ace-main-stylesheet"
+          id="main-ace-style">
     <link rel="stylesheet" href="${contextPath}/component/assets/css/ace-skins.min.css">
     <link rel="stylesheet" href="${contextPath}/component/assets/css/ace-rtl.min.css">
 
@@ -195,26 +196,24 @@
                                 <div class="widget-main">
                                     <h4 class="header blue lighter bigger">
                                         <i class="ace-icon fa fa-coffee green"></i>
-                                       请填写您的账号信息
+                                        请填写您的账号信息
                                     </h4>
                                     <div class="space-6"></div>
 
-                                    <form action="loginAction.do" method="post">
+                                    <form action="loginAction" method="post">
                                         <fieldset>
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input name="name" type="text" class="form-control"
-                                                                   placeholder="名称">
-															<i class="ace-icon fa fa-user"></i>
-														</span>
+                                                <span class="block input-icon input-icon-right">
+                                                    <input name="name" type="text" class="form-control" placeholder="名称">
+                                                    <i class="ace-icon fa fa-user"></i>
+                                                </span>
                                             </label>
 
                                             <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input name="password" type="password" class="form-control"
-                                                                   placeholder="密码">
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
+                                                <span class="block input-icon input-icon-right">
+                                                    <input name="password" type="password" class="form-control" placeholder="密码">
+                                                    <i class="ace-icon fa fa-lock"></i>
+                                                </span>
                                             </label>
 
                                             <div class="space"></div>

@@ -66,12 +66,12 @@ public class AdminController extends BaseController {
             admin = adminService.login(admin);
             if (admin == null) {
                 //有问题
-                modelAndView.setViewName("redirect:/index.do");
+                modelAndView.setViewName("redirect:/index");
             } else {
                 UAI uai = new UAI();
                 uai.setAdmin(admin);
                 session.setAttribute(AuthorityConstant.UAI, uai);
-                modelAndView.setViewName("redirect:/home.do");
+                modelAndView.setViewName("redirect:/home");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +86,7 @@ public class AdminController extends BaseController {
             DataTablePage<Admin> page = null;
             page = adminService.queryPage(admin.toMap(), createDataTablePage(admin));
             modelAndView.addObject("page", page);
-            modelAndView.setViewName("forward:/admin.do");
+            modelAndView.setViewName("forward:/admin");
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <jsp:include page="/WEB-INF/common/index.jsp"></jsp:include>
+    <jsp:include page="/jsp/common/index.jsp"></jsp:include>
     <meta charset="UTF-8">
     <title>HOME</title>
     <style type="text/css">
@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/common/header/index.jsp"></jsp:include>
+<jsp:include page="/jsp/common/header/index.jsp"></jsp:include>
 <div class="context">
     <div id="search" class="form-inline">
         <div class="form-group">

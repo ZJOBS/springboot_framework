@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/authority/authority.iml" filepath="$PROJECT_DIR$/authority/authority.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/console/console.iml" filepath="$PROJECT_DIR$/console/console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/freemaker/freemaker.iml" filepath="$PROJECT_DIR$/freemaker/freemaker.iml" />
       <module fileurl="file://$PROJECT_DIR$/front/front.iml" filepath="$PROJECT_DIR$/front/front.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springboot_framework.iml" filepath="$PROJECT_DIR$/.idea/springboot_framework.iml" />
     </modules>

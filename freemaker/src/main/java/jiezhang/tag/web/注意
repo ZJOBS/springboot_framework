@@ -1,0 +1,4 @@
+经过研究需要完成的步骤
+1、实现jsp自定义标签，获取标签上数据。
+2、实现返回freemarker模板数据（freemarkerde的Configuration对象通过spring注入信息）。
+3、整合1和2，实现获取到自定义标签的数据，通过freemarker模板返回相应数据（jsp返回数据，freemark负责生成需要的数据）

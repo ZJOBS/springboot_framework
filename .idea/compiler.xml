@@ -10,12 +10,14 @@
         <module name="front" />
         <module name="console" />
         <module name="base" />
+        <module name="freemaker" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="authority" target="1.8" />
       <module name="base" target="1.8" />
       <module name="console" target="1.8" />
+      <module name="freemaker" target="1.8" />
       <module name="front" target="1.8" />
       <module name="springboot_framework" target="1.8" />
     </bytecodeTargetLevel>

@@ -4,7 +4,8 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create_system_dictionary" author="zhang">
+
+    <changeSet id="system_dictionary_create" author="zhang">
         <sql>
             CREATE TABLE system_dictionary (
             dict_id varchar(20) NOT NULL,
@@ -19,55 +20,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="create_system_admin" author="zhang">
-        <sql>
-            CREATE TABLE `system_admin` (
-            `admin_id` varchar(20) NOT NULL,
-            `name` varchar(20) NOT NULL COMMENT '管理员名称',
-            `avatar` varchar(20) DEFAULT NULL,
-            `activating` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否激活，0禁用、1启用',
-            `password` varchar(120) NOT NULL COMMENT '管理员登入密码',
-            `description` text DEFAULT NULL COMMENT '说明',
-            `create_ datetime` timestamp NULL DEFAULT current_timestamp(),
-            `update_ datetime` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-            PRIMARY KEY (`admin_id`),
-            UNIQUE KEY `id_UNIQUE` (`admin_id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-        </sql>
-    </changeSet>
-
-    <changeSet id="add_system_admin" author="zhang">
-        <insert tableName="system_admin">
-            <column name="admin_id" value="1"/>
-            <column name="name" value="zhangjie"/>
-            <column name="activating" value="1"/>
-            <column name="password" value="c5c36892a1af06cb6ec9"/>
-            <column name="description" value="系统初始账户"/>
-        </insert>
-        <insert tableName="system_admin">
-            <column name="admin_id" value="2"/>
-            <column name="name" value="ZJOBS"/>
-            <column name="activating" value="1"/>
-            <column name="password" value="c5c36892a1af06cb6ec9"/>
-            <column name="description" value="系统初始账户"/>
-        </insert>
-        <insert tableName="system_admin">
-            <column name="admin_id" value="324686962734661632"/>
-            <column name="name" value="ZJOBS_0射手"/>
-            <column name="activating" value="1"/>
-            <column name="password" value="c5c36892a1af06cb6ec9"/>
-            <column name="description" value="系统初始账户"/>
-        </insert>
-        <insert tableName="system_admin">
-            <column name="admin_id" value="451894153022935040"/>
-            <column name="name" value="上海理工"/>
-            <column name="activating" value="1"/>
-            <column name="password" value="c5c36892a1af06cb6ec9"/>
-            <column name="description" value="上理毕业设计"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="create_system_log" author="zhang">
+    <changeSet id="system_log_create" author="zhang">
         <sql>
             CREATE TABLE `system_log` (
             `log_id` varchar(20) NOT NULL,
@@ -83,7 +36,41 @@
         </sql>
     </changeSet>
 
-    <changeSet id="create_system_menu" author="zhang">
+    <changeSet id="system_admin_create" author="zhang">
+        <sql>
+            CREATE TABLE `system_admin` (
+            `admin_id` varchar(20) NOT NULL,
+            `name` varchar(20) NOT NULL COMMENT '管理员名称',
+            `avatar` varchar(20) DEFAULT NULL,
+            `activating` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否激活，0禁用、1启用',
+            `password` varchar(120) NOT NULL COMMENT '管理员登入密码',
+            `description` text DEFAULT NULL COMMENT '说明',
+            `create_datetime` timestamp NULL DEFAULT current_timestamp(),
+            `update_datetime` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+            PRIMARY KEY (`admin_id`),
+            UNIQUE KEY `id_UNIQUE` (`admin_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        </sql>
+    </changeSet>
+
+    <changeSet id="system_admin_add" author="zhang">
+        <insert tableName="system_admin">
+            <column name="admin_id" value="1"/>
+            <column name="name" value="zhangjie"/>
+            <column name="activating" value="1"/>
+            <column name="password" value="c5c36892a1af06cb6ec9"/>
+            <column name="description" value="系统初始账户"/>
+        </insert>
+        <insert tableName="system_admin">
+            <column name="admin_id" value="2"/>
+            <column name="name" value="ZJOBS"/>
+            <column name="activating" value="1"/>
+            <column name="password" value="c5c36892a1af06cb6ec9"/>
+            <column name="description" value="系统初始账户"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="system_menu_create" author="zhang">
         <sql>
             CREATE TABLE `system_menu` (
             `menu_id` varchar(20) NOT NULL,
@@ -93,21 +80,58 @@
             `activating` tinyint(1) DEFAULT 0,
             `image` varchar(20) DEFAULT NULL,
             `leaf` tinyint(1) DEFAULT NULL,
-            `create_ datetime` timestamp NULL DEFAULT current_timestamp(),
-            `update_ datetime` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+            `create_datetime` timestamp NULL DEFAULT current_timestamp(),
+            `update_datetime` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
             PRIMARY KEY (`menu_id`),
             UNIQUE KEY `system_menu_id_uindex` (`menu_id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         </sql>
     </changeSet>
-    <!--    <changeSet id="add_system_menu" author="zhang">-->
-    <!--        <sql>-->
-    <!--            -->
-    <!--        </sql>-->
-    <!--    </changeSet>-->
 
+    <changeSet id="system_menu_add" author="zhang">
+        <insert tableName="system_menu">
+            <column name="menu_id" value="1"/>
+            <column name="parent_id" value="00"/>
+            <column name="name" value="系统管理"/>
+            <column name="activating" value="1"/>
+            <column name="image" value="fa-cog"/>
+            <column name="leaf" value="0"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="01"/>
+            <column name="parent_id" value="1"/>
+            <column name="name" value="管理员维护"/>
+            <column name="url" value="adminIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="02"/>
+            <column name="parent_id" value="1"/>
+            <column name="name" value="数据字典"/>
+            <column name="url" value="dictIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="03"/>
+            <column name="parent_id" value="1"/>
+            <column name="name" value="角色管理"/>
+            <column name="url" value="roleIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="04"/>
+            <column name="parent_id" value="1"/>
+            <column name="name" value="菜单管理"/>
+            <column name="url" value="menuIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+    </changeSet>
 
-    <changeSet id="create_system_role" author="zhang">
+    <changeSet id="system_role_create" author="zhang">
         <sql>
             CREATE TABLE `system_role` (
             `role_id` varchar(20) NOT NULL,
@@ -119,16 +143,15 @@
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         </sql>
     </changeSet>
+    <changeSet id="system_role_add" author="zhang">
+        <insert tableName="system_role">
+            <column name="role_id" value="1"/>
+            <column name="name" value="系统管理员"/>
+            <column name="activating" value="1"/>
+        </insert>
+    </changeSet>
 
-    <!--    <changeSet id="add_system_role" author="zhang">-->
-    <!--        <insert tableName="system_role">-->
-    <!--            <column name="role_id" value="325035890382471168"/>-->
-    <!--            <column name="name" value="系统管理员"/>-->
-    <!--            <column name="activating" value="1"/>-->
-    <!--        </insert>-->
-    <!--    </changeSet>-->
-
-    <changeSet id="create_system_role_menu" author="zhang">
+    <changeSet id="system_role_menu_create" author="zhang">
         <sql>
             CREATE TABLE `system_role_menu` (
             `role_menu_id` varchar(20) NOT NULL,
@@ -138,8 +161,40 @@
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         </sql>
     </changeSet>
+    <changeSet id="system_role_menu_add" author="zhang">
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="00"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="1"/>
+        </insert>
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="10"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="00"/>
+        </insert>
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="11"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="01"/>
+        </insert>
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="12"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="02"/>
+        </insert>
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="13"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="03"/>
+        </insert>
+        <insert tableName="system_role_menu">
+            <column name="role_menu_id" value="14"/>
+            <column name="role_id" value="1"/>
+            <column name="menu_id" value="04"/>
+        </insert>
+    </changeSet>
 
-    <changeSet id="create_system_admin_role" author="zhang">
+    <changeSet id="system_admin_role_create" author="zhang">
         <sql>
             CREATE TABLE `system_admin_role` (
             `admin_role_id` varchar(20) NOT NULL,
@@ -149,4 +204,17 @@
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         </sql>
     </changeSet>
+    <changeSet id="system_admin_role_add" author="zhang">
+        <insert tableName="system_admin_role">
+            <column name="admin_role_id" value="1"/>
+            <column name="admin_id" value="1"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="system_admin_role">
+            <column name="admin_role_id" value="2"/>
+            <column name="admin_id" value="2"/>
+            <column name="role_id" value="1"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

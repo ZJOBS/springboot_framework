@@ -8,6 +8,25 @@ spring:
   http:
     encoding:
       force: true
+#  jackson:
+#    #日期格式化
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    serialization:
+#      #格式化输出
+#      indent_output: true
+#      #忽略无法转换的对象
+#      fail_on_empty_beans: false
+#    #设置空如何序列化
+#    defaultPropertyInclusion: CUSTOM
+#    deserialization:
+#      #允许对象忽略json中不存在的属性
+#      fail_on_unknown_properties: false
+#    parser:
+#      #允许出现特殊字符和转义符
+#      allow_unquoted_control_chars: true
+#      #允许出现单引号
+#      allow_single_quotes: true
+
   liquibase:
     enabled: true
     change-log: classpath:/changelog/db.changelog-master.xml
@@ -23,10 +42,13 @@ spring:
         max-wait: -1
         max-idle: 10
         min-idle: 0
-
 mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:*mapper/**/*Mapper.xml
   type-aliases-package: jiezhang
+
 
 properties:
   server_dataCenterId: 1

@@ -36,7 +36,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="${pageContext.request.contextPath}/home.do" class="navbar-brand">
+            <a href="${pageContext.request.contextPath}/home" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
                     张杰平台 管理端
@@ -311,7 +311,7 @@
                     </a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="logoutAction.do">
+                            <a href="logoutAction">
                                 <i class="ace-icon fa fa-power-off"></i>
                                 登出
                             </a>

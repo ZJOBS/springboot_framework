@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 </head>
 
 <body class="no-skin">
@@ -21,7 +21,7 @@
                 <div class="clearfix">
                     <div class="pull-right tableTools-container"></div>
                 </div>
-                <form class="form-horizontal" role="form" enctype="multipart/form-data" action="test.do">
+                <form class="form-horizontal" role="form" enctype="multipart/form-data" action="test">
                         <zj:radio name="country" code="COUNTRY" text="国家"/>
                  </form>
             </div><!-- /.page-content -->

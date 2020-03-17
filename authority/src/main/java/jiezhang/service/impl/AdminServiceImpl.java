@@ -6,7 +6,6 @@ import jiezhang.service.AdminService;
 import jiezhang.base.entity.DataTablePage;
 import jiezhang.base.service.AbstractService;
 import jiezhang.base.utils.EncryptAndDecryptUtil;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

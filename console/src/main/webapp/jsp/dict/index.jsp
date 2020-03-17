@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Dict</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
     <script>
         /*是否可以变为调用数据字典生成此方法*/
@@ -54,17 +54,17 @@
 
                                     <zj:tableColumn id="dict" key="dictId" defaultOperation="YES"
                                                     search="#search"
-                                                    queryUrl="/queryDict.do"
-                                                    addUrl="/addDict.do"
-                                                    editUrl="/updateDict.do"
-                                                    deleteUrl="/deleteDict.do"
+                                                    queryUrl="/queryDict"
+                                                    addUrl="/addDict"
+                                                    editUrl="/updateDict"
+                                                    deleteUrl="/deleteDict"
                                                     columnTitle="编号,父编号,编码,名称,值,是否启用"
                                                     columnFormat="{'aTargets': 5, 'mRender': formatActivating}"
                                                     columnName="{'mData': 'dictId'},{'mData': 'parentId'},{'mData': 'code'},{'mData': 'name'},{'mData': 'value'},{'mData': 'activating','type':'checkbox'}"
                                                     formId="dialog-confirm"
                                     />
 
-                                    <zj:relationtable id="parentDict" queryUrl="/queryDict.do"
+                                    <zj:relationtable id="parentDict" queryUrl="/queryDict"
                                                       columnTitle="编号,父编号,编码,名称,值,是否启用"
                                                       columnName="{'mData': 'dictId'},{'mData': 'parentId'},{'mData': 'code'},{'mData': 'name'},{'mData': 'value'},{'mData': 'activating'}"
                                                       relation="['dictId','parentId']"
@@ -85,7 +85,7 @@
     </div>
 </div>
 <div id="dialog-confirm" class="hide">
-    <jsp:include page="/WEB-INF/dict/form.jsp"/>
+    <jsp:include page="/jsp/dict/form.jsp"/>
 </div>
 <!-- /.main-container -->
 </body>

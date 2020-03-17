@@ -23,12 +23,15 @@
         <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
         <liquibase-core.version>3.8.7</liquibase-core.version>
         <jstl.version>1.2</jstl.version>
+        <baidu.version>4.12.0</baidu.version>
         <!--1.2.66-->
     </properties>
     <modules>
-        <module>console</module>
         <module>base</module>
         <module>authority</module>
+        <module>freeMaker</module>
+        <module>console</module>
+        <module>front</module>
     </modules>
 
     <!--    <parent>-->
@@ -189,6 +192,11 @@
                 <version>${JieZhang.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>JieZhang</groupId>
+                <artifactId>freeMaker</artifactId>
+                <version>${JieZhang.version}</version>
+            </dependency>
 
 
             <dependency>
@@ -196,6 +204,13 @@
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.baidu.aip</groupId>
+                <artifactId>java-sdk</artifactId>
+                <version>${baidu.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <!--父工程中定义，子工程中就可以不用定义，统一jdk版本-->

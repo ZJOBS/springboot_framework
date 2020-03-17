@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <title>Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <jsp:include page="/WEB-INF/common/style.jsp"/>
-    <jsp:include page="/WEB-INF/common/js.jsp"/>
+    <jsp:include page="/jsp/common/style.jsp"/>
+    <jsp:include page="/jsp/common/js.jsp"/>
 
 </head>
 
@@ -48,7 +48,7 @@
 
                                     <zj:tableColumn id="log" key="logId"
                                                     search="#search"
-                                                    queryUrl="/queryLog.do"
+                                                    queryUrl="/queryLog"
                                                     columnTitle="编号,管理员编号,模块名称,方法,响应时间,ip,执行时间,结果"
                                                     columnName="{'mData': 'logId'},{'mData': 'adminId'},{'mData': 'moduleName'},{'mData': 'method'},{'mData': 'responseDate'},{'mData': 'ip'},{'mData': 'dateTime'},{'mData': 'result'}"
                                     />

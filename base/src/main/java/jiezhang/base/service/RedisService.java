@@ -5,7 +5,6 @@ import jiezhang.base.entity.db.RedisEntity;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jiezhang on 2017/6/20.
