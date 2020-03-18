@@ -1,10 +1,21 @@
 package jiezhang.console.controller;
 
 import com.baidu.aip.nlp.AipNlp;
+import jiezhang.base.context.SpringContext;
+import jiezhang.base.entity.Result;
+import jiezhang.base.service.RedisService;
+import jiezhang.console.service.impl.WebSocketServer;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.IOException;
 
 /**
  * 默认控制层
@@ -13,6 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class DefaultController {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+
     /**
      * 欢迎页
      *
@@ -42,5 +58,21 @@ public class DefaultController {
         String text = "收本月托收银票，票限制少，芜湖扬子农商行 邵文浩 。";
         JSONObject res = client.lexer(text, null);
         return res.toString();
+    }
+
+    /**
+     * 已实现通过监听redis实现订阅与发布功能
+     *
+     * @param
+     * @return jiezhang.base.entity.Result
+     * @author ZhangJie
+     * @description
+     * @date 9:16 下午 2020/3/18
+     */
+    @RequestMapping("sendMessage")
+    @ResponseBody
+    public Result sendMessage() {
+        redisTemplate.convertAndSend("TOPIC", "收到订阅消息");
+        return Result.ofSuccess();
     }
 }

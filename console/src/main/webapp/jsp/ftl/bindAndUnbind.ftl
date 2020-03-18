@@ -173,8 +173,7 @@
                 url: "${contextPath}${addUrl}",
                 type: 'post',
                 data: {${relationName}s: ids.join(","),
-            ${keyName}:
-            ${keyName}Bind
+            ${keyName}:${keyName}Bind
         },
             success: function (result) {
                 ${id}LeftDataTable.api().ajax.reload();
@@ -201,8 +200,7 @@
                 url: "${contextPath}${deleteUrl}",
                 type: 'post',
                 data: {${relationName}s: ids.join(","),
-            ${keyName}:
-            ${keyName}Bind
+            ${keyName}:${keyName}Bind
         },
             success: function (result) {
                 ${id}LeftDataTable.api().ajax.reload();

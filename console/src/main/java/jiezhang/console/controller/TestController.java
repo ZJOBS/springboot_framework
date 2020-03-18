@@ -1,18 +1,17 @@
 package jiezhang.console.controller;
 
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class TestController {
 
-//    @Value("${image_server}")
-//    private String val;
 
-//    @RequestMapping("/index")
-//    public String index(Model model) {
-//        model.addAttribute("name", "jsp张杰");
-//        return "index";
-//    }
 
+    @RequestMapping("/test")
+    public String test() {
+        return "test/index";
+    }
 
 }
