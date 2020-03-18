@@ -1,37 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="zj" uri="http://www.zjobs.cn/jsp/jstl" %>
 <!DOCTYPE HTML>
 <html lang="zh-cn">
 <head>
-    <script>
-        var ws = new WebSocket("ws://localhost:8080/console/pushMess");
-
-        ws.onopen = function (evt) {
-            console.log("Connection open ...");
-        };
-
-        ws.onmessage = function (evt) {
-            if (typeof event.data === String) {
-                console.log("Received data string");
-            }
-
-            if (event.data instanceof ArrayBuffer) {
-                var buffer = event.data;
-                console.log("Received arraybuffer");
-            }
-            console.log("Received Message: " + evt.data);
-        };
-    </script>
+    <zj:webSocket url="ws://localhost:8080/console/websocket/server" isPrint="1"/>
 </head>
 <div id="navbar" class="navbar navbar-default ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
             <span class="sr-only">Toggle sidebar</span>
-
             <span class="icon-bar"></span>
-
             <span class="icon-bar"></span>
-
             <span class="icon-bar"></span>
         </button>
 

@@ -385,4 +385,18 @@
             <required>false</required>
         </attribute>
     </tag>
+
+    <tag>
+        <name>webSocket</name>
+        <tag-class>jiezhang.tag.web.WebSocket</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>isPrint</name>
+            <required>false</required>
+        </attribute>
+    </tag>
 </taglib>

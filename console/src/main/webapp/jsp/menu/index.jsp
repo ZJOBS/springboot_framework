@@ -17,7 +17,7 @@
         // return data == 0 ? '禁用' : '启用';
         // };
         function formatActivating(data, type, full) {
-        return data == 0 ? '未激活' : '激活';
+                return data == 0 ? '未激活' : '激活';
         };
         function formatLeaf(data, type, full) {
         return data == 0 ? '父' : '子';
