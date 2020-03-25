@@ -187,9 +187,9 @@ public class BaseEntity implements Serializable {
     /**
      * 获取数据库主键字段的Field,通过@ID标记
      */
-    private Field gainIdField() {
+    protected Field gainIdField() {
         Field[] fields = this.getClass().getDeclaredFields();
-        for (Field field : this.getClass().getDeclaredFields()) {
+        for (Field field : fields) {
             if (field.isAnnotationPresent(Id.class)) {
                 return field;
             }
