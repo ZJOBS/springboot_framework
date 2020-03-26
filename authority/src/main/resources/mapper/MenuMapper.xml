@@ -72,13 +72,6 @@
         left join system_admin sa on sa.admin_id = sar.admin_id
         where sa.admin_id = #{adminId}
     </select>
-
-    <delete id="deleteEntity" parameterType="java.util.Map">
-        DELETE FROM
-        <include refid="table_name"/>
-        WHERE
-        menu_id = #{menuId}
-    </delete>
     <sql id="table_name">
           system_menu
     </sql>

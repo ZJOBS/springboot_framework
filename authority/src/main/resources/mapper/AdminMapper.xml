@@ -28,7 +28,8 @@
         </where>
     </select>
 
-    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Admin">
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+            resultType="jiezhang.entity.db.Admin">
         SELECT * FROM
         <include refid="table_name"/>
         <where>
@@ -43,20 +44,6 @@
             order by ${params.orderColumn} ${params.orderDir}
         </if>
     </select>
-
-    <!--<select id="queryPage" parameterType="Page" resultType="zjobs.entity.db.Admin">-->
-    <!--SELECT * FROM-->
-    <!--<include refid="table_name"/>-->
-    <!--<if test="params.orderColumn != null and params.orderColumn != ''">-->
-    <!--order by ${params.orderColumn} ${params.orderDir}-->
-    <!--</if>-->
-    <!--</select>-->
-    <delete id="deleteEntity" parameterType="java.util.Map">
-        DELETE FROM
-        <include refid="table_name"/>
-        WHERE
-        admin_id = #{adminId}
-    </delete>
 
     <select id="selectAll" parameterType="java.util.Map" resultType="jiezhang.entity.db.Admin">
         select * from

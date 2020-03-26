@@ -26,8 +26,8 @@
         </where>
     </select>
 
-
-    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+            resultType="jiezhang.entity.db.Role">
         SELECT * FROM
         <include refid="table_name"/>
         <where>
@@ -58,14 +58,6 @@
         </if>
     </select>
 
-
-
-    <delete id="deleteEntity" parameterType="java.util.Map">
-        DELETE FROM
-        <include refid="table_name"/>
-        WHERE
-        role_id = #{roleId}
-    </delete>
     <sql id="table_name">
           system_role
     </sql>
