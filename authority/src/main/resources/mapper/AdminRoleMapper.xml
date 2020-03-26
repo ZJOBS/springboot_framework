@@ -24,15 +24,6 @@
             WHERE sr.role_id = aaa.role_id
 )
     </select>
-
-    <insert id="insertList" parameterType="java.util.List">
-        INSERT INTO system_admin_role (admin_role_id, admin_id,role_id)
-        values
-        <foreach collection="list" item="item" index="index" separator=",">
-            (#{item.adminRoleId}, #{item.adminId},#{item.roleId})
-        </foreach>
-    </insert>
-
     <delete id="removeList" parameterType="java.util.Map">
         DELETE FROM system_admin_role WHERE admin_id = #{adminId}
         AND role_id IN

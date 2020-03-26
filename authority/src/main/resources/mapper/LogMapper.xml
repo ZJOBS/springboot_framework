@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jiezhang.mapper.LogMapper">
-    <insert id="insertEntity" parameterType="java.util.Map">
-        INSERT INTO
-        <include refid="table_name"/>
-        (log_id,admin_id,module_name,method,response_date,ip,date_time,result)
-        VALUES
-        (#{logId},#{adminId},#{moduleName},#{method},#{responseDate},#{ip},#{dateTime},#{result})
-    </insert>
+
+
     <delete id="deleteEntity" parameterType="java.util.Map">
         delete FROM
         <include refid="table_name"/>

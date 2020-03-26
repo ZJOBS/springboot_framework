@@ -4,6 +4,7 @@ package jiezhang.entity.db;
 import jiezhang.base.annotation.ForeignTableId;
 import jiezhang.base.annotation.Id;
 import jiezhang.base.annotation.PrimaryTableId;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
@@ -12,6 +13,7 @@ import jiezhang.base.entity.BaseEntity;
  * @author ZhangJie
  * @date 2017/12/16
  */
+@TableName(name = "system_role_menu")
 public class RoleMenu extends BaseEntity {
     @Id
     private String roleMenuId;
@@ -54,9 +56,6 @@ public class RoleMenu extends BaseEntity {
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", sequence=" + sequence +
-                ", createDateStr='" + createDateStr + '\'' +
-                ", updateDateStr='" + updateDateStr + '\'' +
                 ", state='" + state + '\'' +
                 ", activating=" + activating +
                 '}';

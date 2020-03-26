@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jiezhang.base.mapper.DictMapper">
-    <insert id="insertEntity" parameterType="java.util.Map">
-        INSERT INTO
-        <include refid="table_name"/>
-        (dict_id,code,value,activating,name,parent_id)
-        VALUES
-        (#{dictId},#{code},#{value},#{activating},#{name},#{parentId})
-    </insert>
+
     <delete id="deleteEntity" parameterType="java.util.Map">
         delete FROM
         <include refid="table_name"/>

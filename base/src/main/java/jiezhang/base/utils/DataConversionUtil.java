@@ -82,7 +82,12 @@ public class DataConversionUtil {
      * @param str
      * @return
      */
-    public static StringBuffer camel(StringBuffer str) {
+    public static String camel(String str) {
+        return camel(new StringBuffer(str)).toString();
+    }
+
+
+    private static StringBuffer camel(StringBuffer str) {
         Matcher matcher = camelPattern.matcher(str);
         StringBuffer sb = new StringBuffer(str);
         if (matcher.find()) {
@@ -98,14 +103,18 @@ public class DataConversionUtil {
         return camel(sb);
     }
 
-
     /**
      * 驼峰转下划线
      *
      * @param str
      * @return
      */
-    public static StringBuffer underline(StringBuffer str) {
+    public static String underline(String str) {
+        return underline(new StringBuffer(str)).toString();
+    }
+
+
+    private static StringBuffer underline(StringBuffer str) {
         Matcher matcher = underline.matcher(str);
         StringBuffer sb = new StringBuffer(str);
         if (matcher.find()) {

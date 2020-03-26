@@ -68,7 +68,7 @@ public class BaseController<T extends BaseEntity, E extends Exception> {
         String orderDir = getParameterString("sSortDir_0");
         //排序的列。注意，我认为页面上的列的名字要和表中列的名字一致，否则，会导致SQL拼接错误
         String orderColumn = getParameterString("mDataProp_" + order);
-        orderColumn = DataConversionUtil.underline(new StringBuffer(orderColumn)).toString();
+        orderColumn = DataConversionUtil.underline(orderColumn).toString();
         //加入排序数据
         Map<String, Object> pmp = parameter.toMap();
         pmp.put("orderColumn", orderColumn);

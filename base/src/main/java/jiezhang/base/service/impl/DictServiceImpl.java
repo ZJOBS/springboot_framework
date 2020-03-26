@@ -72,5 +72,4 @@ public class DictServiceImpl extends AbstractService<Dict, DictMapper> implement
 
     }
 
-
 }

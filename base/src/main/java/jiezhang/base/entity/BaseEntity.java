@@ -28,12 +28,6 @@ public class BaseEntity implements Serializable {
 
     protected Date updateDate;
 
-    protected int sequence;
-
-    protected String createDateStr;
-
-    protected String updateDateStr;
-
     /**
      * 状态为多种时
      */
@@ -43,8 +37,6 @@ public class BaseEntity implements Serializable {
      * 只有禁用和启用状态, checkbox没选中不会往后端传值，所以需要boolean的默认值
      */
     protected boolean activating;
-
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 
     public String getCreateUserName() {
@@ -69,7 +61,6 @@ public class BaseEntity implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-        this.createDateStr = this.createDate == null ? "" : sdf.format(this.createDate);
     }
 
     public Date getUpdateDate() {
@@ -78,33 +69,17 @@ public class BaseEntity implements Serializable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = new Date();
-        this.updateDateStr = this.updateDate == null ? "" : sdf.format(this.updateDate);
     }
 
-    public String getCreateDateStr() {
-        return createDateStr;
+//
+//    public int getSequence() {
+//        return sequence;
+//    }
+//
+//    public void setSequence(int sequence) {
+//        this.sequence = sequence;
+//    }
 
-    }
-
-    public void setCreateDateStr(String createDateStr) {
-        this.createDateStr = createDateStr;
-    }
-
-    public int getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(int sequence) {
-        this.sequence = sequence;
-    }
-
-    public String getUpdateDateStr() {
-        return updateDateStr;
-    }
-
-    public void setUpdateDateStr(String updateDateStr) {
-        this.updateDateStr = updateDateStr;
-    }
 
     public String getState() {
         return state;
@@ -122,14 +97,6 @@ public class BaseEntity implements Serializable {
         this.activating = activating;
     }
 
-
-    //    public Boolean getActivating() {
-//        return activating;
-//    }
-//
-//    public void setActivating(Boolean activating) {
-//        this.activating = activating;
-//    }
 
     /**
      * 将对象转换为map

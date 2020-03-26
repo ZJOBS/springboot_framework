@@ -30,7 +30,7 @@ public class AdminServiceImpl extends AbstractService<Admin, AdminMapper> implem
         entity.setUpdateUserName(entity.getName());
         Admin odlUser = mapper.selectEntity(entity.toMap());
         if (odlUser == null) {
-            int isInsert = mapper.insertEntity(entity.toMap());
+            int isInsert = mapper.insertEntity(entity);
             if (isInsert == 1) {
                 return 1;
             }

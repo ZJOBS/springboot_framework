@@ -2,16 +2,18 @@ package jiezhang.entity.db;
 
 
 import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
  * @author ZhangJie
  * @date 2016/2/14
  */
-
+@TableName(name = "system_admin")
 public class Admin extends BaseEntity {
     @Id
     private String adminId;
+
     private String name;
     private String avatar;
     private String password;
@@ -71,9 +73,6 @@ public class Admin extends BaseEntity {
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", sequence=" + sequence +
-                ", createDateStr='" + createDateStr + '\'' +
-                ", updateDateStr='" + updateDateStr + '\'' +
                 ", state='" + state + '\'' +
                 ", activating=" + activating +
                 '}';

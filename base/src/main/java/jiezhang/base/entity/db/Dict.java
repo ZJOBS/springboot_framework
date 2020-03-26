@@ -2,6 +2,7 @@ package jiezhang.base.entity.db;
 
 
 import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
@@ -9,8 +10,8 @@ import jiezhang.base.entity.BaseEntity;
  *
  * @author jiezhang
  */
+@TableName(name = "system_dictionary")
 public class Dict extends BaseEntity {
-    public static String STATE_DEFAULT = "0";
     @Id
     private String dictId;
     private String parentId;
@@ -66,14 +67,10 @@ public class Dict extends BaseEntity {
                 ", code='" + code + '\'' +
                 ", value='" + value + '\'' +
                 ", name='" + name + '\'' +
-//                ", id='" + id + '\'' +
                 ", createUserName='" + createUserName + '\'' +
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", sequence=" + sequence +
-                ", createDateStr='" + createDateStr + '\'' +
-                ", updateDateStr='" + updateDateStr + '\'' +
                 ", state=" + state +
                 ", activating=" + activating +
                 '}';

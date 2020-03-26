@@ -2,11 +2,13 @@ package jiezhang.entity.db;
 
 
 import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
  * Created by jiezhang on 2017/6/13.
  */
+@TableName(name = "system_menu")
 public class Menu extends BaseEntity {
     @Id
     private String menuId;
@@ -78,9 +80,6 @@ public class Menu extends BaseEntity {
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", sequence=" + sequence +
-                ", createDateStr='" + createDateStr + '\'' +
-                ", updateDateStr='" + updateDateStr + '\'' +
                 ", state=" + state +
                 ", activating=" + activating +
                 '}';

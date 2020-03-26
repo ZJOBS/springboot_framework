@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jiezhang.mapper.RoleMapper">
-    <insert id="insertEntity" parameterType="java.util.Map">
-        INSERT INTO
-        <include refid="table_name"/>
-        (role_id,name,activating,description)
-        VALUE(#{roleId},#{name},#{activating},#{description})
-    </insert>
 
     <update id="updateEntity" parameterType="java.util.Map">
         UPDATE

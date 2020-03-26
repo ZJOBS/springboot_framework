@@ -14,7 +14,7 @@
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
-        <hutool.version>5.1.5</hutool.version>
+        <hutool.version>5.2.4</hutool.version>
         <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
         <JieZhang.version>0.0.1-SNAPSHOT</JieZhang.version>
         <tomcat-embed-jasper.versoon>9.0.17</tomcat-embed-jasper.versoon>
@@ -141,7 +141,6 @@
                 <artifactId>hutool-json</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
-
 
             <!--            -->
             <dependency>

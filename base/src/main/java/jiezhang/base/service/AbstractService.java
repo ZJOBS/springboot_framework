@@ -41,7 +41,7 @@ public abstract class AbstractService<T extends BaseEntity, D extends BaseMapper
     public int createEntity(T entity) throws Exception {
         long id = sequenceService.getSequence();
         entity.putIdField(String.valueOf(id));
-        return mapper.insertEntity(entity.toMap());
+        return mapper.insertEntity(entity);
     }
 
     @Override

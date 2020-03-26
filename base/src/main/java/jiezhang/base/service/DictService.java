@@ -19,4 +19,5 @@ public interface DictService extends BaseService<Dict, Exception> {
      * 更新redis中的数据字典
      */
     public void updateRedisDict() throws Exception;
+
 }

@@ -2,6 +2,7 @@ package jiezhang.entity.db;
 
 
 import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
@@ -9,6 +10,7 @@ import jiezhang.base.entity.BaseEntity;
  *
  * @author jiezhang
  */
+@TableName(name = "system_log")
 public class Log extends BaseEntity {
     /**
      * 日志编号

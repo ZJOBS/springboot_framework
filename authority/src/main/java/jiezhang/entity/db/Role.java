@@ -2,11 +2,13 @@ package jiezhang.entity.db;
 
 
 import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 
 /**
  * Created by jiezhang on 2017/6/15.
  */
+@TableName(name = "system_role")
 public class Role extends BaseEntity {
     @Id
     private String roleId;
@@ -48,9 +50,6 @@ public class Role extends BaseEntity {
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", sequence=" + sequence +
-                ", createDateStr='" + createDateStr + '\'' +
-                ", updateDateStr='" + updateDateStr + '\'' +
                 ", state=" + state +
                 ", activating=" + activating +
                 '}';

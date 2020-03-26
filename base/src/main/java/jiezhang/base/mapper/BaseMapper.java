@@ -1,10 +1,16 @@
 package jiezhang.base.mapper;
 
 
+import jiezhang.base.annotation.Id;
+import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
+import jiezhang.base.entity.db.Dict;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -23,11 +29,14 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
     /**
      * 增
      *
-     * @param parameter
-     * @return
-     * @throws E
+     * @param t
+     * @return int
+     * @author ZhangJie
+     * @description
+     * @date 3:37 下午 2020/3/26
      */
-    public int insertEntity(Map<String, Object> parameter) throws E;
+    @InsertProvider(type = MybatisCRUDTemplate.class, method = "generateInsertSql")
+    public int insertEntity(T t);
 
     /**
      * 删
@@ -64,6 +73,5 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @throws Exception
      */
     public List<T> queryDataTablePage(DataTablePage<T> page) throws Exception;
-
 
 }
