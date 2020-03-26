@@ -1,6 +1,6 @@
 package jiezhang.base.mapper;
 
-import cn.hutool.core.util.StrUtil;
+import jiezhang.base.annotation.Id;
 import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.utils.DataConversionUtil;
@@ -32,10 +32,11 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
         sql.append("INSERT INTO ")
                 .append(obj.getClass().getAnnotation(TableName.class).name())
                 .append("(");
-        Field[] fields = obj.getClass().getDeclaredFields();
 
         StringBuffer cols = new StringBuffer();
         StringBuffer values = new StringBuffer().append("(");
+
+        Field[] fields = obj.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
             String name = field.getName();
@@ -53,6 +54,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
                 cols.append(" ").append(name).append(",");
                 values.append(" ").append(o).append(",");
             }
+
         }
         cols.deleteCharAt(cols.length() - 1);
         values.deleteCharAt(values.length() - 1);
@@ -62,13 +64,36 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
         return sql.toString();
     }
 
-    public String deleteSql(T obj) {
+    /**
+     * @param obj
+     * @return java.lang.String
+     * @author ZhangJie
+     * @description
+     * @date 4:14 下午 2020/3/26
+     */
+    public String generateDeleteByIdSql(T obj) throws IllegalAccessException {
         StringBuffer sql = new StringBuffer();
-//        sql
-//        delete FROM
-//        <include refid="table_name"/>
-//                where
-//        dict_id = #{dictId}
+        sql.append("delete from ")
+                .append(obj.getClass().getAnnotation(TableName.class).name())
+                .append(" where ");
+        StringBuffer column = new StringBuffer(), value = new StringBuffer();
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            if (field.isAnnotationPresent(Id.class)) {
+                Object o = field.get(obj);
+                if (field.getType() == String.class) {
+                    //String类别
+                    column.append(DataConversionUtil.underline(field.getName()));
+                    value.append("'").append(o).append("'");
+                } else {
+                    //驼峰转下划线
+                    column.append(field.getName());
+                    value.append(o);
+                }
+            }
+        }
+        sql.append(column).append(" = ").append(value);
         return sql.toString();
     }
 }

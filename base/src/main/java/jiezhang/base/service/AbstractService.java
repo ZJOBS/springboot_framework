@@ -52,7 +52,7 @@ public abstract class AbstractService<T extends BaseEntity, D extends BaseMapper
             System.out.println("数据未null");
             throw new Exception("没有ID");
         }
-        return mapper.deleteEntity(entity.toMap());
+        return mapper.deleteById(entity);
     }
 
     @Override

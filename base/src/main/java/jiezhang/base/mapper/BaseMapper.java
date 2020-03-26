@@ -9,6 +9,7 @@ import jiezhang.base.entity.db.Dict;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -41,11 +42,12 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
     /**
      * 删
      *
-     * @param parameter
+     * @param t
      * @return
      * @throws E
      */
-    public int deleteEntity(Map<String, Object> parameter) throws E;
+    @InsertProvider(type = MybatisCRUDTemplate.class, method = "generateDeleteByIdSql")
+    public int deleteById(T t) throws E;
 
     /**
      * 改
