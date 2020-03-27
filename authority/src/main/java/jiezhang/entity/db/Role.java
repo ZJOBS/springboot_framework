@@ -13,6 +13,7 @@ public class Role extends BaseEntity {
     @Id
     private String roleId;
     private String name;
+    private Boolean activating;
     private String description;
 
     public String getRoleId() {
@@ -31,6 +32,14 @@ public class Role extends BaseEntity {
         this.name = name;
     }
 
+    public Boolean getActivating() {
+        return activating;
+    }
+
+    public void setActivating(Boolean activating) {
+        this.activating = activating;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -44,13 +53,13 @@ public class Role extends BaseEntity {
         return "Role{" +
                 "roleId='" + roleId + '\'' +
                 ", name='" + name + '\'' +
+                ", activating=" + activating +
                 ", description='" + description + '\'' +
-//                ", id='" + id + '\'' +
                 ", createUserName='" + createUserName + '\'' +
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", state=" + state +
+                ", state='" + state + '\'' +
                 ", activating=" + activating +
                 '}';
     }

@@ -57,7 +57,6 @@ public class RoleMenu extends BaseEntity {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", state='" + state + '\'' +
-                ", activating=" + activating +
                 '}';
     }
 }

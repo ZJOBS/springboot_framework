@@ -13,7 +13,7 @@ import jiezhang.base.entity.BaseEntity;
 public class Admin extends BaseEntity {
     @Id
     private String adminId;
-
+    private Boolean activating;
     private String name;
     private String avatar;
     private String password;
@@ -25,6 +25,14 @@ public class Admin extends BaseEntity {
 
     public void setAdminId(String adminId) {
         this.adminId = adminId;
+    }
+
+    public Boolean getActivating() {
+        return activating;
+    }
+
+    public void setActivating(Boolean activating) {
+        this.activating = activating;
     }
 
     public String getName() {
@@ -51,7 +59,6 @@ public class Admin extends BaseEntity {
         this.password = password;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -60,11 +67,11 @@ public class Admin extends BaseEntity {
         this.description = description;
     }
 
-
     @Override
     public String toString() {
         return "Admin{" +
                 "adminId='" + adminId + '\'' +
+                ", activating=" + activating +
                 ", name='" + name + '\'' +
                 ", avatar='" + avatar + '\'' +
                 ", password='" + password + '\'' +
@@ -74,7 +81,6 @@ public class Admin extends BaseEntity {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", state='" + state + '\'' +
-                ", activating=" + activating +
                 '}';
     }
 }

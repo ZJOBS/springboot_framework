@@ -13,6 +13,7 @@ public class Menu extends BaseEntity {
     @Id
     private String menuId;
     private String parentId;
+    private Boolean activating;
     private String name;
     private String url;
     private String image;
@@ -32,6 +33,14 @@ public class Menu extends BaseEntity {
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
+    }
+
+    public Boolean getActivating() {
+        return activating;
+    }
+
+    public void setActivating(Boolean activating) {
+        this.activating = activating;
     }
 
     public String getName() {
@@ -71,17 +80,16 @@ public class Menu extends BaseEntity {
         return "Menu{" +
                 "menuId='" + menuId + '\'' +
                 ", parentId='" + parentId + '\'' +
+                ", activating=" + activating +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", image='" + image + '\'' +
                 ", leaf=" + leaf +
-//                ", id='" + id + '\'' +
                 ", createUserName='" + createUserName + '\'' +
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", state=" + state +
-                ", activating=" + activating +
+                ", state='" + state + '\'' +
                 '}';
     }
 }

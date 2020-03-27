@@ -67,7 +67,6 @@ public class Message extends BaseEntity {
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", state='" + state + '\'' +
-                ", activating=" + activating +
                 '}';
     }
 }

@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -32,11 +31,6 @@ public class BaseEntity implements Serializable {
      * 状态为多种时
      */
     protected String state;
-
-    /**
-     * 只有禁用和启用状态, checkbox没选中不会往后端传值，所以需要boolean的默认值
-     */
-    protected boolean activating;
 
 
     public String getCreateUserName() {
@@ -68,18 +62,8 @@ public class BaseEntity implements Serializable {
     }
 
     public void setUpdateDate(Date updateDate) {
-        this.updateDate = new Date();
+        this.updateDate = updateDate;
     }
-
-//
-//    public int getSequence() {
-//        return sequence;
-//    }
-//
-//    public void setSequence(int sequence) {
-//        this.sequence = sequence;
-//    }
-
 
     public String getState() {
         return state;
@@ -88,15 +72,6 @@ public class BaseEntity implements Serializable {
     public void setState(String state) {
         this.state = state;
     }
-
-    public boolean getActivating() {
-        return activating;
-    }
-
-    public void setActivating(boolean activating) {
-        this.activating = activating;
-    }
-
 
     /**
      * 将对象转换为map

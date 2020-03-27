@@ -15,6 +15,7 @@ public class Dict extends BaseEntity {
     @Id
     private String dictId;
     private String parentId;
+    private Boolean activating;
     private String code;
     private String value;
     private String name;
@@ -33,6 +34,14 @@ public class Dict extends BaseEntity {
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
+    }
+
+    public Boolean getActivating() {
+        return activating;
+    }
+
+    public void setActivating(Boolean activating) {
+        this.activating = activating;
     }
 
     public String getCode() {
@@ -64,6 +73,7 @@ public class Dict extends BaseEntity {
         return "Dict{" +
                 "dictId='" + dictId + '\'' +
                 ", parentId='" + parentId + '\'' +
+                ", activating=" + activating +
                 ", code='" + code + '\'' +
                 ", value='" + value + '\'' +
                 ", name='" + name + '\'' +
@@ -71,8 +81,7 @@ public class Dict extends BaseEntity {
                 ", updateUserName='" + updateUserName + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
-                ", state=" + state +
-                ", activating=" + activating +
+                ", state='" + state + '\'' +
                 '}';
     }
 }
