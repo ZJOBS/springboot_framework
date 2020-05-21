@@ -6,9 +6,11 @@
             resultType="jiezhang.console.entity.db.CqBillConfig">
         SELECT * FROM
         <include refid="table_name"/>
+        order by  attribute ,cq_bill_config_id
     </select>
 
     <sql id="table_name">
           cq_bill_config
     </sql>
+
 </mapper>

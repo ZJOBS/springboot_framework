@@ -8,5 +8,6 @@
 
     <include file="classpath:changelog/system-db-schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:changelog/product-db-schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:changelog/cqbill-db-schema.xml" relativeToChangelogFile="false"/>
 <!--    <include file="classpath:/notice-db-schema.xml" relativeToChangelogFile="false"></include>-->
 </databaseChangeLog>
