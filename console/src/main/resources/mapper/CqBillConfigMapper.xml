@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jiezhang.console.mapper.CqBillConfigMapper">
+
+    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+            resultType="jiezhang.console.entity.db.CqBillConfig">
+        SELECT * FROM
+        <include refid="table_name"/>
+    </select>
+
+    <sql id="table_name">
+          cq_bill_config
+    </sql>
+</mapper>
