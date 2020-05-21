@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * 默认控制层
@@ -55,8 +56,9 @@ public class DefaultController {
         client.setSocketTimeoutInMillis(60000);
 
         // 调用接口
-        String text = "收本月托收银票，票限制少，芜湖扬子农商行 邵文浩 。";
+        String text = "1、收1亿足年双国股 2、代友询价收年内到期授信城商 3、代友出年内国股小票，城商票 欢迎小窗，好友位备需";
         JSONObject res = client.lexer(text, null);
+        System.out.println(res);
         return res.toString();
     }
 
@@ -75,4 +77,6 @@ public class DefaultController {
         redisTemplate.convertAndSend("TOPIC", "收到订阅消息");
         return Result.ofSuccess();
     }
+
+
 }

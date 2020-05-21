@@ -210,6 +210,13 @@
                 <version>${baidu.version}</version>
             </dependency>
 
+
+            <dependency>
+                <groupId>com.internetitem</groupId>
+                <artifactId>logback-elasticsearch-appender</artifactId>
+                <version>1.7.3-SNAPSHOT</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <!--父工程中定义，子工程中就可以不用定义，统一jdk版本-->
