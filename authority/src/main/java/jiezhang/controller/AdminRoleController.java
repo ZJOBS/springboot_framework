@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -37,7 +38,7 @@ public class AdminRoleController extends BaseBindAndNotBindController {
 
     @RequestMapping(value = "queryAdminBindRole")
     @ResponseBody
-    public DataTablePage<Role> queryBindDataTablePage(Admin admin, HttpServletRequest request) {
+    public DataTablePage<Role> queryBindDataTablePage(Admin admin) {
         DataTablePage<Role> page = null;
         try {
             page = adminRoleService.queryBindDataTablePage(admin.toMap(), createDataTablePage(admin));
@@ -49,7 +50,7 @@ public class AdminRoleController extends BaseBindAndNotBindController {
 
     @RequestMapping(value = "queryAdminNotBindRole")
     @ResponseBody
-    public DataTablePage<Role> queryNotBindDataTablePage(Admin admin, HttpServletRequest request) {
+    public DataTablePage<Role> queryNotBindDataTablePage(Admin admin) {
         DataTablePage<Role> page = null;
         try {
             page = adminRoleService.queryNotBindDataTablePage(admin.toMap(), createDataTablePage(admin));
@@ -62,7 +63,7 @@ public class AdminRoleController extends BaseBindAndNotBindController {
     @RequestMapping(value = "bindAdminRole", method = RequestMethod.POST)
     @ResponseBody
     @SystemLog(module = "管理员模块", methods = "绑定用户角色关系")
-    public int bindAdminRole(String adminId, String roleIds, HttpServletRequest request) {
+    public int bindAdminRole(String adminId, String roleIds) {
         int flag = 0;
         try {
             List<AdminRole> adminRoleList = new ArrayList<AdminRole>();
@@ -87,7 +88,7 @@ public class AdminRoleController extends BaseBindAndNotBindController {
     @RequestMapping(value = "unbindAdminRole")
     @ResponseBody
     @SystemLog(module = "管理员模块", methods = "解绑用户角色关系")
-    public int unbindAdminRole(String adminId, String roleIds, HttpServletRequest request) {
+    public int unbindAdminRole(String adminId, String roleIds) {
         int flag = 0;
         try {
             Map<String, Object> pmp = new HashMap<String, Object>();

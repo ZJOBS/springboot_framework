@@ -1,15 +1,14 @@
 package jiezhang.controller;
 
+import jiezhang.base.controller.BaseController;
+import jiezhang.base.entity.DataTablePage;
 import jiezhang.constant.AuthorityConstant;
 import jiezhang.entity.UAI;
 import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.SystemLog;
 import jiezhang.service.AdminService;
-import jiezhang.base.controller.BaseController;
-import jiezhang.base.entity.DataTablePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +31,7 @@ public class AdminController extends BaseController<Admin, AdminService> {
 
 
     @RequestMapping(value = "index")
-    public String index(HttpSession session) {
+    public String index() {
         //这个index界面必须放到web-inf中
         return "index";
     }
@@ -79,7 +78,7 @@ public class AdminController extends BaseController<Admin, AdminService> {
     }
 
     @RequestMapping(value = "adminIndex")
-    public ModelAndView adminIndex(Admin admin, HttpServletRequest request) {
+    public ModelAndView adminIndex(Admin admin) {
         ModelAndView modelAndView = new ModelAndView();
         try {
             DataTablePage<Admin> page = null;

@@ -12,8 +12,8 @@ import java.util.*;
 /**
  * 中间表绑定与未绑定抽象类
  *
- * @param <F>
- * @param <T>
+ * @param <F> 主表对象
+ * @param <T> 从表对象
  * @param <D> mapper
  * @param <E> 异常
  * @author jiezhang
