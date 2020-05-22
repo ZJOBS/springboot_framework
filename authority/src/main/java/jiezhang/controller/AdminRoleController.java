@@ -1,5 +1,6 @@
 package jiezhang.controller;
 
+import jiezhang.base.controller.BaseBindAndNotBindController;
 import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.AdminRole;
 import jiezhang.entity.db.Role;
@@ -26,7 +27,7 @@ import java.util.*;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class AdminRoleController extends BaseController {
+public class AdminRoleController extends BaseBindAndNotBindController {
     private final static Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
     @Autowired
     private AdminRoleService adminRoleService;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,11 +27,9 @@ import javax.servlet.http.HttpSession;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class AdminController extends BaseController {
+public class AdminController extends BaseController<Admin, AdminService> {
     private final static Logger logger = LoggerFactory.getLogger(AdminController.class);
 
-    @Autowired
-    private AdminService adminService;
 
     @RequestMapping(value = "index")
     public String index(HttpSession session) {
@@ -63,7 +62,7 @@ public class AdminController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         logger.info("logback 成功了");
         try {
-            admin = adminService.login(admin);
+            admin = service.login(admin);
             if (admin == null) {
                 //有问题
                 modelAndView.setViewName("redirect:/index");
@@ -84,7 +83,7 @@ public class AdminController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         try {
             DataTablePage<Admin> page = null;
-            page = adminService.queryPage(admin.toMap(), createDataTablePage(admin));
+            page = service.queryPage(admin.toMap(), createDataTablePage(admin));
             modelAndView.addObject("page", page);
             modelAndView.setViewName("forward:/admin");
         } catch (Exception e) {
@@ -96,13 +95,7 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "queryAdmin")
     @ResponseBody
     public DataTablePage<Admin> pageQueryAdmin(Admin admin) {
-        DataTablePage<Admin> page = null;
-        try {
-            page = adminService.queryPage(admin.toMap(), createDataTablePage(admin));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return page;
+        return super.pageQuery(admin);
     }
 
     @RequestMapping(value = "addAdmin")
@@ -115,7 +108,7 @@ public class AdminController extends BaseController {
                 long imgId = qiNiuService.uploadFile(file);
                 admin.setAvatar(String.valueOf(imgId));
             }
-            flag = adminService.createEntity(admin);
+            flag = service.createEntity(admin);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,13 +120,7 @@ public class AdminController extends BaseController {
     @ResponseBody
     @SystemLog(module = "管理员模块", methods = "删除管理员")
     public int deleteAdmin(Admin admin) {
-        int flag = 0;
-        try {
-            flag = adminService.removeEntity(admin);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
+        return super.delete(admin);
     }
 
 
@@ -147,7 +134,7 @@ public class AdminController extends BaseController {
                 long imgId = qiNiuService.uploadFile(avatar);
                 admin.setAvatar(String.valueOf(imgId));
             }
-            flag = adminService.modifyEntity(admin);
+            flag = service.modifyEntity(admin);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -2,14 +2,14 @@ package jiezhang.base.controller;
 
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
+import jiezhang.base.entity.db.Dict;
 import jiezhang.base.entity.db.UserAccount;
-import jiezhang.base.service.BaseService;
-import jiezhang.base.service.QiNiuService;
-import jiezhang.base.service.SequenceService;
+import jiezhang.base.service.*;
 import jiezhang.base.utils.DataConversionUtil;
 import jiezhang.base.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,13 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-public class BaseController<T extends BaseEntity, D extends BaseService<T, Exception>> {
-
+/**
+ * @author ZhangJie by  on 2016/2/14.
+ */
+@Controller
+public class BaseBindAndNotBindController<F extends BaseEntity, D extends BaseBindAndNotBindService> {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
-    @Autowired
-    protected D service;
+
 
     @Autowired
     @Qualifier("snowflakeSequenceImpl")
@@ -44,8 +46,8 @@ public class BaseController<T extends BaseEntity, D extends BaseService<T, Excep
     }
 
 
-    protected DataTablePage<T> createDataTablePage(T parameter) {
-        DataTablePage<T> page = new DataTablePage<T>();
+    protected DataTablePage<F> createDataTablePage(F parameter) {
+        DataTablePage<F> page = new DataTablePage<F>();
         int sEcho = Integer.valueOf(getParameterInt("sEcho", 1));
         int iDisplayStart = Integer.valueOf(getParameterInt("iDisplayStart", 1));
         int iDisplayLength = Integer.valueOf(getParameterInt("iDisplayLength", 10));
@@ -126,47 +128,5 @@ public class BaseController<T extends BaseEntity, D extends BaseService<T, Excep
 
     protected void setSession(HttpSession session) {
         this.session = session;
-    }
-
-
-    protected DataTablePage<T> pageQuery(T entity) {
-        DataTablePage<T> page = null;
-        try {
-            page = service.queryPage(entity.toMap(), createDataTablePage(entity));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return page;
-    }
-
-
-    protected int add(T entity) {
-        int flag = 0;
-        try {
-            flag = service.createEntity(entity);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
-    }
-
-    protected int delete(T dict) {
-        int flag = 0;
-        try {
-            flag = service.removeEntity(dict);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
-    }
-
-    protected int update(T dict) {
-        int flag = 0;
-        try {
-            flag = service.modifyEntity(dict);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
     }
 }
