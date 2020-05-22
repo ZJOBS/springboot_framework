@@ -1,5 +1,6 @@
 package jiezhang.controller;
 
+import jiezhang.base.controller.BaseBindAndNotBindController;
 import jiezhang.entity.UAI;
 import jiezhang.base.constant.BaseConstants;
 import jiezhang.base.controller.BaseController;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Controller;
  * Created by ZhangJie on 2016/4/13.
  */
 @Controller
-public class AuthorityController extends BaseController {
+public class AuthorityController extends BaseBindAndNotBindController {
 
     protected UAI getUAI() {
         return (UAI) getSession().getAttribute(BaseConstants.UAI);

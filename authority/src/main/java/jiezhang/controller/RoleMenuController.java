@@ -1,5 +1,6 @@
 package jiezhang.controller;
 
+import jiezhang.base.controller.BaseBindAndNotBindController;
 import jiezhang.entity.db.Menu;
 import jiezhang.entity.db.Role;
 import jiezhang.entity.db.RoleMenu;
@@ -24,7 +25,7 @@ import java.util.*;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class RoleMenuController extends BaseController {
+public class RoleMenuController extends BaseBindAndNotBindController {
     private final static Logger logger = LoggerFactory.getLogger(RoleMenuController.class);
 
     @Autowired

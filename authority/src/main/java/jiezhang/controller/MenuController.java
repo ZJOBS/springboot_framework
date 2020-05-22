@@ -20,9 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class MenuController extends BaseController {
-    @Autowired
-    private MenuService menuService;
+public class MenuController extends BaseController<Menu, MenuService> {
 
     @RequestMapping(value = "menuIndex")
     public String menu() {
@@ -31,15 +29,8 @@ public class MenuController extends BaseController {
 
     @RequestMapping(value = "queryMenu")
     @ResponseBody
-    public DataTablePage<Menu> pageQueryMenu(Menu menu, HttpServletRequest request) {
-        DataTablePage<Menu> page = null;
-        try {
-            page = menuService.queryPage(menu.toMap(), createDataTablePage(menu));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return page;
+    public DataTablePage<Menu> pageQueryMenu(Menu menu) {
+        return pageQuery(menu);
     }
 
     @RequestMapping(value = "addMenu")
@@ -48,9 +39,8 @@ public class MenuController extends BaseController {
     public int addMenu(Menu menu) {
         int flag = 0;
         try {
-            flag = menuService.createEntity(menu);
-            //重新设置redis中的数据
-            menuService.updateRedisMenu();
+            flag = super.add(menu);
+            service.updateRedisMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,9 +54,9 @@ public class MenuController extends BaseController {
     public int deleteMenu(Menu menu) {
         int flag = 0;
         try {
-            flag = menuService.removeEntity(menu);
+            flag = super.delete(menu);
             //重新设置redis中的数据
-            menuService.updateRedisMenu();
+            service.updateRedisMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,9 +70,10 @@ public class MenuController extends BaseController {
     public int updateMenu(Menu menu) {
         int flag = 0;
         try {
-            flag = menuService.modifyEntity(menu);
+            flag = super.update(menu);
+            flag = service.modifyEntity(menu);
             //重新设置redis中的数据
-            menuService.updateRedisMenu();
+            service.updateRedisMenu();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,4 +1,7 @@
 package jiezhang.base.controller;
 
-public class LicenseController extends BaseController {
+public class LicenseController
+//        extends BaseController
+
+{
 }

@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author jiezhang
  */
 @Controller
-public class LogController extends BaseController {
-
-    @Autowired
-    private LogService logService;
+public class LogController extends BaseController<Log, LogService> {
 
 
     @RequestMapping(value = "logIndex")
@@ -31,13 +28,6 @@ public class LogController extends BaseController {
     @RequestMapping(value = "queryLog")
     @ResponseBody
     public DataTablePage<Log> pageQueryLog(Log log) {
-        DataTablePage<Log> page = null;
-        try {
-            page = logService.queryPage(log.toMap(), createDataTablePage(log));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return page;
+        return super.pageQuery(log);
     }
 }

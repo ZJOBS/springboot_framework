@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class RoleController extends BaseController {
-    @Autowired
-    private RoleService roleService;
+public class RoleController extends BaseController<Role, RoleService> {
 
     @Autowired
     private MenuService menuService;
@@ -31,14 +29,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "queryRole")
     @ResponseBody
     public DataTablePage<Role> pageQueryRole(Role role) {
-        DataTablePage<Role> page = null;
-        try {
-            page = roleService.queryPage(role.toMap(), createDataTablePage(role));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return page;
+        return super.pageQuery(role);
     }
 
 
@@ -46,13 +37,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     @SystemLog(module = "角色模块", methods = "添加角色")
     public int addRole(Role role) {
-        int flag = 0;
-        try {
-            flag = roleService.createEntity(role);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
+        return super.add(role);
     }
 
 
@@ -60,13 +45,7 @@ public class RoleController extends BaseController {
     @ResponseBody
     @SystemLog(module = "角色模块", methods = "删除角色")
     public int deleteRole(Role role) {
-        int flag = 0;
-        try {
-            flag = roleService.removeEntity(role);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return flag;
+        return super.delete(role);
     }
 
 
@@ -76,7 +55,7 @@ public class RoleController extends BaseController {
     public int updateRole(Role role) {
         int flag = 0;
         try {
-            flag = roleService.modifyEntity(role);
+            flag = super.update(role);
             //重新设置redis中的数据
             menuService.updateRedisMenu();
         } catch (Exception e) {
