@@ -96,6 +96,8 @@
           <element id="library" level="project" name="Maven: com.baidu.aip:java-sdk:4.12.0" />
           <element id="library" level="project" name="Maven: org.json:json:20160810" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-simple:1.7.30" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/com/internetitem/logback-elasticsearch-appender/1.7.3-SNAPSHOT/logback-elasticsearch-appender-1.7.3-20180815.020919-1.jar" output-file-name="logback-elasticsearch-appender-1.7.3-SNAPSHOT.jar" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:2.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.2.4.RELEASE" />
@@ -109,7 +111,6 @@
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-json:2.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.2" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.10.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-parameter-names:2.10.2" />
@@ -129,7 +130,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.2.3.RELEASE" />
           <element id="archive" name="freeMaker-0.0.1-SNAPSHOT.jar">
-            <element id="module-output" name="freemaker" />
+            <element id="module-output" name="freeMaker" />
           </element>
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:9.0.17" />
           <element id="library" level="project" name="Maven: org.eclipse.jdt:ecj:3.15.0" />

@@ -113,6 +113,12 @@
             <groupId>com.baidu.aip</groupId>
             <artifactId>java-sdk</artifactId>
         </dependency>
+
+        <dependency>
+
+            <groupId>com.internetitem</groupId>
+            <artifactId>logback-elasticsearch-appender</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

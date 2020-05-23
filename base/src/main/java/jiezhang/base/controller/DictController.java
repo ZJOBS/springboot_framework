@@ -21,14 +21,16 @@ public class DictController extends BaseController<Dict, DictService> {
 
     @RequestMapping(value = "queryDict")
     @ResponseBody
-    public DataTablePage<Dict> pageQueryDict(Dict dict) {
+    @Override
+    public DataTablePage<Dict> pageQuery(Dict dict) {
         return super.pageQuery(dict);
     }
 
 
     @RequestMapping(value = "addDict")
     @ResponseBody
-    public int addDict(Dict dict) {
+    @Override
+    public int add(Dict dict) {
         return super.add(dict);
     }
 
