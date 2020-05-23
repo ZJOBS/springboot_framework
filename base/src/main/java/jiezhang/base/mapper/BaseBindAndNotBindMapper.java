@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 绑定与未绑定Dao
  *
- * @param <F>辅表
+ * @param <F>主表
  * @param <T>中间表
  * @param <E>自定义异常
  * @author ZhangJie

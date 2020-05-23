@@ -12,14 +12,14 @@ import java.util.*;
 /**
  * 中间表绑定与未绑定抽象类
  *
- * @param <F>
- * @param <T>
+ * @param <F> 多对象
+ * @param <T> 一对象
  * @param <D> mapper
  * @param <E> 异常
  * @author jiezhang
  * @date 2018/02/09
  */
-public abstract class AbstractBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, D extends BaseBindAndNotBindMapper<F, T, E>, E extends Exception> implements BaseBindAndNotBindService<F, T, E> {
+public abstract class AbstractBindAndNotBindService<M extends BaseEntity, T extends BaseEntity, F extends BaseEntity, D extends BaseBindAndNotBindMapper<F, T, E>, E extends Exception> implements BaseBindAndNotBindService<M, T, F, E> {
     @Autowired
     protected D mapper;
 
@@ -53,7 +53,7 @@ public abstract class AbstractBindAndNotBindService<F extends BaseEntity, T exte
 
     @Override
     public int bind(List<T> list) throws Exception {
-        List<T> insertList = new ArrayList<>(list.size());
+        List<T> insertList = new ArrayList(list.size());
         //防止出现一毫秒内重号
         Set<String> set = new HashSet<String>();
         while (true) {
@@ -63,7 +63,7 @@ public abstract class AbstractBindAndNotBindService<F extends BaseEntity, T exte
                 set.add(String.valueOf(sequenceService.getSequence()));
             }
         }
-        List<String> seqList = new LinkedList<String>();
+        List<String> seqList = new LinkedList();
         seqList.addAll(set);
         for (int i = 0; i < list.size(); i++) {
             T entity = list.get(i);

@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="front" />
         <module name="authority" />
-        <module name="freemaker" />
+        <module name="freeMaker" />
         <module name="console" />
         <module name="base" />
+        <module name="freemaker" />
+        <module name="front" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8" />

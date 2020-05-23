@@ -17,22 +17,22 @@ public class UserLogInInterceptor implements HandlerInterceptor {
     /**
      * 不做登陆拦截的对象数组
      */
-    private static String[] LoginUrl = {"loginAction.do", "logoutAction.do", "index.do"};
-    /**
-     * 需要拦截的对象的后缀 集合
-     */
-    private static String[] OnFilter = {".do"};
+    private static String[] LoginUrl = {"loginAction", "logoutAction", "index"};
+//    /**
+//     * 需要拦截的对象的后缀 集合
+//     */
+//    private static String[] OnFilter = {".do"};
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String url = request.getServletPath().substring(1);
         boolean filterFlag = true;
         //检查请求后缀，判断是否需要拦截
-        for (int i = 0; i < OnFilter.length; i++) {
-            if (url.endsWith(OnFilter[i])) {
-                filterFlag = false;
-            }
-        }
+//        for (int i = 0; i < OnFilter.length; i++) {
+//            if (url.endsWith(OnFilter[i])) {
+//                filterFlag = false;
+//            }
+//        }
         if (filterFlag) {
             //log.info("登陆拦截-结束-url(" + url + ")不在拦截范围之内");
             return true;
