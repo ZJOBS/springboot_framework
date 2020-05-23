@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @date 2017/12/16
  */
 @Service
-public class AdminRoleServiceImpl extends AbstractBindAndNotBindService<Role, AdminRole, Admin, AdminRoleMapper, Exception> implements AdminRoleService {
+public class AdminRoleServiceImpl extends AbstractBindAndNotBindService<Admin, AdminRole, Role, AdminRoleMapper, Exception> implements AdminRoleService {
 
 }

@@ -16,7 +16,7 @@ import java.util.Map;
  * @author jiezhang
  * @date 2018/02/09
  */
-public interface BaseBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, M extends BaseEntity, E extends Exception> {
+public interface BaseBindAndNotBindService<M extends BaseEntity, T extends BaseEntity, F extends BaseEntity, E extends Exception> {
 
 
     /**

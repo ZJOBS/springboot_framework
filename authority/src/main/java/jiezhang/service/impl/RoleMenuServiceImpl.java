@@ -14,5 +14,5 @@ import org.springframework.stereotype.Service;
  * @author jiezhang
  */
 @Service
-public class RoleMenuServiceImpl extends AbstractBindAndNotBindService<Menu, RoleMenu, Role, RoleMenuMapper, Exception> implements RoleMenuService {
+public class RoleMenuServiceImpl extends AbstractBindAndNotBindService<Role, RoleMenu, Menu, RoleMenuMapper, Exception> implements RoleMenuService {
 }

@@ -25,7 +25,7 @@ import java.util.*;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class RoleMenuController extends BaseBindAndNotBindController<Menu, RoleMenu, Role, Exception, RoleMenuService> {
+public class RoleMenuController extends BaseBindAndNotBindController<Role, RoleMenu, Menu, Exception, RoleMenuService> {
     private final static Logger logger = LoggerFactory.getLogger(RoleMenuController.class);
 
     @Autowired

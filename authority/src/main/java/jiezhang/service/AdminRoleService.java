@@ -12,6 +12,6 @@ import jiezhang.base.service.BaseBindAndNotBindService;
  * @author jiezhang
  * @date 2017/12/16
  */
-public interface AdminRoleService extends BaseBindAndNotBindService<Role, AdminRole, Admin, Exception> {
+public interface AdminRoleService extends BaseBindAndNotBindService<Admin, AdminRole, Role, Exception> {
 
 }

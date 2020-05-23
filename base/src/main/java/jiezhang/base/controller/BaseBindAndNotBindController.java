@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * @author ZhangJie by  on 2016/2/14.
  */
-public class BaseBindAndNotBindController<F extends BaseEntity, T extends BaseEntity, M extends BaseEntity, E extends Exception, D extends BaseBindAndNotBindService<F, T, M, E>> {
+public class BaseBindAndNotBindController<M extends BaseEntity, T extends BaseEntity, F extends BaseEntity, E extends Exception, D extends BaseBindAndNotBindService<M, T, F, E>> {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;

@@ -26,7 +26,7 @@ import java.util.*;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class AdminRoleController extends BaseBindAndNotBindController<Role, AdminRole, Admin, Exception, AdminRoleService> {
+public class AdminRoleController extends BaseBindAndNotBindController<Admin, AdminRole, Role, Exception, AdminRoleService> {
     private final static Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
     @Autowired
     private AdminRoleService adminRoleService;
