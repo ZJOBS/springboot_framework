@@ -28,7 +28,8 @@ public class RoleController extends BaseController<Role, RoleService> {
 
     @RequestMapping(value = "queryRole")
     @ResponseBody
-    public DataTablePage<Role> pageQueryRole(Role role) {
+    @Override
+    public DataTablePage<Role> pageQuery(Role role) {
         return super.pageQuery(role);
     }
 
@@ -36,7 +37,8 @@ public class RoleController extends BaseController<Role, RoleService> {
     @RequestMapping(value = "addRole")
     @ResponseBody
     @SystemLog(module = "角色模块", methods = "添加角色")
-    public int addRole(Role role) {
+    @Override
+    public int add(Role role) {
         return super.add(role);
     }
 
@@ -44,7 +46,8 @@ public class RoleController extends BaseController<Role, RoleService> {
     @RequestMapping(value = "deleteRole")
     @ResponseBody
     @SystemLog(module = "角色模块", methods = "删除角色")
-    public int deleteRole(Role role) {
+    @Override
+    public int delete(Role role) {
         return super.delete(role);
     }
 
@@ -52,7 +55,8 @@ public class RoleController extends BaseController<Role, RoleService> {
     @RequestMapping(value = "updateRole")
     @ResponseBody
     @SystemLog(module = "角色模块", methods = "添加角色")
-    public int updateRole(Role role) {
+    @Override
+    public int update(Role role) {
         int flag = 0;
         try {
             flag = super.update(role);

@@ -36,7 +36,8 @@ public class MenuController extends BaseController<Menu, MenuService> {
     @RequestMapping(value = "addMenu")
     @ResponseBody
     @SystemLog(module = "菜单模块", methods = "添加菜单")
-    public int addMenu(Menu menu) {
+    @Override
+    public int add(Menu menu) {
         int flag = 0;
         try {
             flag = super.add(menu);
@@ -51,7 +52,8 @@ public class MenuController extends BaseController<Menu, MenuService> {
     @RequestMapping(value = "deleteMenu")
     @ResponseBody
     @SystemLog(module = "菜单模块", methods = "删除菜单")
-    public int deleteMenu(Menu menu) {
+    @Override
+    public int delete(Menu menu) {
         int flag = 0;
         try {
             flag = super.delete(menu);
@@ -67,7 +69,8 @@ public class MenuController extends BaseController<Menu, MenuService> {
     @RequestMapping(value = "updateMenu")
     @ResponseBody
     @SystemLog(module = "菜单模块", methods = "修改菜单")
-    public int updateMenu(Menu menu) {
+    @Override
+    public int update(Menu menu) {
         int flag = 0;
         try {
             flag = super.update(menu);

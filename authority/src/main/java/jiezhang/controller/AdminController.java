@@ -93,7 +93,8 @@ public class AdminController extends BaseController<Admin, AdminService> {
 
     @RequestMapping(value = "queryAdmin")
     @ResponseBody
-    public DataTablePage<Admin> pageQueryAdmin(Admin admin) {
+    @Override
+    public DataTablePage<Admin> pageQuery(Admin admin) {
         return super.pageQuery(admin);
     }
 
@@ -118,7 +119,8 @@ public class AdminController extends BaseController<Admin, AdminService> {
     @RequestMapping(value = "deleteAdmin")
     @ResponseBody
     @SystemLog(module = "管理员模块", methods = "删除管理员")
-    public int deleteAdmin(Admin admin) {
+    @Override
+    public int delete(Admin admin) {
         return super.delete(admin);
     }
 
@@ -126,7 +128,7 @@ public class AdminController extends BaseController<Admin, AdminService> {
     @RequestMapping(value = "updateAdmin")
     @ResponseBody
     @SystemLog(module = "管理员模块", methods = "修改管理员")
-    public int updateAdmin(Admin admin, MultipartFile avatar) {
+    public int update(Admin admin, MultipartFile avatar) {
         int flag = 0;
         try {
             if (avatar != null) {
