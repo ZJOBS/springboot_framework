@@ -1,22 +1,13 @@
 package jiezhang.console.controller;
 
 import com.baidu.aip.nlp.AipNlp;
-import jiezhang.base.context.SpringContext;
 import jiezhang.base.entity.Result;
-import jiezhang.base.service.RedisService;
-import jiezhang.console.service.impl.WebSocketServer;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.listener.ChannelTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.IOException;
-import java.util.HashMap;
 
 /**
  * 默认控制层

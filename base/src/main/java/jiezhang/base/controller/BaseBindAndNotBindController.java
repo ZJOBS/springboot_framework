@@ -20,11 +20,13 @@ import java.util.Map;
 /**
  * @author ZhangJie by  on 2016/2/14.
  */
-@Controller
-public class BaseBindAndNotBindController<F extends BaseEntity, D extends BaseBindAndNotBindService> {
+public class BaseBindAndNotBindController<F extends BaseEntity, T extends BaseEntity, M extends BaseEntity, E extends Exception, D extends BaseBindAndNotBindService<F, T, M, E>> {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
+
+    @Autowired
+    private D bindAndNotBindService;
 
 
     @Autowired
@@ -46,7 +48,7 @@ public class BaseBindAndNotBindController<F extends BaseEntity, D extends BaseBi
     }
 
 
-    protected DataTablePage<F> createDataTablePage(F parameter) {
+    protected DataTablePage<F> createDataTablePage(M parameter) {
         DataTablePage<F> page = new DataTablePage<F>();
         int sEcho = Integer.valueOf(getParameterInt("sEcho", 1));
         int iDisplayStart = Integer.valueOf(getParameterInt("iDisplayStart", 1));
@@ -128,5 +130,27 @@ public class BaseBindAndNotBindController<F extends BaseEntity, D extends BaseBi
 
     protected void setSession(HttpSession session) {
         this.session = session;
+    }
+
+
+    protected DataTablePage<F> queryBindDataTablePage(M m) {
+        DataTablePage<F> page = null;
+        try {
+            page = bindAndNotBindService.queryBindDataTablePage(m.toMap(), createDataTablePage(m));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return page;
+    }
+
+
+    protected DataTablePage<F> queryNotBindDataTablePage(M m) {
+        DataTablePage<F> page = null;
+        try {
+            page = bindAndNotBindService.queryNotBindDataTablePage(m.toMap(), createDataTablePage(m));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return page;
     }
 }

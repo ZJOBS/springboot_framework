@@ -9,13 +9,14 @@ import java.util.Map;
 /**
  * 抽象服务接口
  *
- * @param <F>
- * @param <T>
- * @param <E>
+ * @param <M> 主表
+ * @param <F> 从表表
+ * @param <T> 中间表
+ * @param <E> 异常
  * @author jiezhang
  * @date 2018/02/09
  */
-public interface BaseBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, E extends Exception> {
+public interface BaseBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, M extends BaseEntity, E extends Exception> {
 
 
     /**

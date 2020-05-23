@@ -1,14 +1,13 @@
 package jiezhang.controller;
 
 import jiezhang.base.controller.BaseBindAndNotBindController;
+import jiezhang.base.entity.DataTablePage;
 import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.AdminRole;
 import jiezhang.entity.db.Role;
 import jiezhang.entity.db.SystemLog;
 import jiezhang.service.AdminRoleService;
 import jiezhang.service.MenuService;
-import jiezhang.base.controller.BaseController;
-import jiezhang.base.entity.DataTablePage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 /**
@@ -28,7 +26,7 @@ import java.util.*;
  */
 @SuppressWarnings("rawtypes")
 @Controller
-public class AdminRoleController extends BaseBindAndNotBindController {
+public class AdminRoleController extends BaseBindAndNotBindController<Role, AdminRole, Admin, Exception, AdminRoleService> {
     private final static Logger logger = LoggerFactory.getLogger(AdminRoleController.class);
     @Autowired
     private AdminRoleService adminRoleService;
@@ -38,26 +36,15 @@ public class AdminRoleController extends BaseBindAndNotBindController {
 
     @RequestMapping(value = "queryAdminBindRole")
     @ResponseBody
-    public DataTablePage<Role> queryBindDataTablePage(Admin admin) {
-        DataTablePage<Role> page = null;
-        try {
-            page = adminRoleService.queryBindDataTablePage(admin.toMap(), createDataTablePage(admin));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return page;
+    public DataTablePage<Role> queryPage(Admin admin) {
+        return super.queryBindDataTablePage(admin);
     }
 
     @RequestMapping(value = "queryAdminNotBindRole")
     @ResponseBody
+    @Override
     public DataTablePage<Role> queryNotBindDataTablePage(Admin admin) {
-        DataTablePage<Role> page = null;
-        try {
-            page = adminRoleService.queryNotBindDataTablePage(admin.toMap(), createDataTablePage(admin));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return page;
+        return super.queryNotBindDataTablePage(admin);
     }
 
     @RequestMapping(value = "bindAdminRole", method = RequestMethod.POST)

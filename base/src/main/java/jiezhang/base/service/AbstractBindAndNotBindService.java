@@ -12,14 +12,14 @@ import java.util.*;
 /**
  * 中间表绑定与未绑定抽象类
  *
- * @param <F> 主表对象
- * @param <T> 从表对象
+ * @param <F> 多对象
+ * @param <T> 一对象
  * @param <D> mapper
  * @param <E> 异常
  * @author jiezhang
  * @date 2018/02/09
  */
-public abstract class AbstractBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, D extends BaseBindAndNotBindMapper<F, T, E>, E extends Exception> implements BaseBindAndNotBindService<F, T, E> {
+public abstract class AbstractBindAndNotBindService<F extends BaseEntity, T extends BaseEntity, M extends BaseEntity, D extends BaseBindAndNotBindMapper<F, T, E>, E extends Exception> implements BaseBindAndNotBindService<F, T, M, E> {
     @Autowired
     protected D mapper;
 

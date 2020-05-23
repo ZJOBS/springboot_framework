@@ -1,5 +1,6 @@
 package jiezhang.service.impl;
 
+import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.AdminRole;
 import jiezhang.entity.db.Role;
 import jiezhang.mapper.AdminRoleMapper;
@@ -14,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @date 2017/12/16
  */
 @Service
-public class AdminRoleServiceImpl extends AbstractBindAndNotBindService<Role, AdminRole, AdminRoleMapper, Exception> implements AdminRoleService {
+public class AdminRoleServiceImpl extends AbstractBindAndNotBindService<Role, AdminRole, Admin, AdminRoleMapper, Exception> implements AdminRoleService {
 
 }
