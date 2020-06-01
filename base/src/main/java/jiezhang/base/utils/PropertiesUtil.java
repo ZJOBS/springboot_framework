@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 
 public class PropertiesUtil {
     public static Map<String, String> loadProperties(String filePath) {
-        Map<String, String> map = new HashMap<String, String>();
+
         if (null == filePath || "".equals(filePath.trim())) {
             return null;
         }
@@ -22,6 +22,7 @@ public class PropertiesUtil {
         Set<Entry<Object, Object>> set = prop.entrySet();
         Iterator<Entry<Object, Object>> it = set.iterator();
         String key = null, value = null;
+        Map<String, String> map = new HashMap<String, String>(set.size());
         while (it.hasNext()) {
             Entry<Object, Object> entry = it.next();
             key = String.valueOf(entry.getKey());

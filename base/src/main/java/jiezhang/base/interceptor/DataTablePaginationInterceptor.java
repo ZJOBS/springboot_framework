@@ -1,5 +1,6 @@
 package jiezhang.base.interceptor;
 
+import jiezhang.base.constant.DataBase;
 import jiezhang.base.entity.DataTablePage;
 import jiezhang.base.utils.PropertiesUtil;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
@@ -83,9 +84,9 @@ public class DataTablePaginationInterceptor implements Interceptor {
     private String getPageSql(DataTablePage page, String sql) {
         StringBuffer sqlBuffer = new StringBuffer(sql);
         //需要优化，将此数据库类型放到常量中，因经常使用
-        if ("mysql".equalsIgnoreCase(DATABASETYPE)) {
+        if (DataBase.MYSQL.checkName(DATABASETYPE)) {
             return getMysqlPageSql(page, sqlBuffer);
-        } else if ("oracle".equalsIgnoreCase(DATABASETYPE)) {
+        } else if (DataBase.ORALCE.checkName((DATABASETYPE))) {
             System.out.println("暂时不支持 oracle");
             //return getOraclePageSql(page, sqlBuffer);
             return "";

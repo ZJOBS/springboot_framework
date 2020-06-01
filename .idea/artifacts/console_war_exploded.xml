@@ -87,7 +87,7 @@
           <element id="library" level="project" name="Maven: cn.hutool:hutool-core:5.2.4" />
           <element id="library" level="project" name="Maven: cn.hutool:hutool-crypto:5.2.4" />
           <element id="library" level="project" name="Maven: cn.hutool:hutool-json:5.2.4" />
-          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.2.28" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.2.18" />
           <element id="library" level="project" name="Maven: com.squareup.okhttp3:okhttp:3.14.2" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.17.2" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.5" />

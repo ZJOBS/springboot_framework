@@ -81,7 +81,7 @@ public class RoleMenuController extends BaseBindAndNotBindController<Role, RoleM
     public int unbindRoleMenu(String roleId, String menuIds) {
         int flag = 0;
         try {
-            Map<String, Object> pmp = new HashMap<String, Object>();
+            Map<String, Object> pmp = new HashMap<String, Object>(2);
             pmp.put("roleId", roleId);
             List<String> list = Arrays.asList(menuIds.split(","));
             pmp.put("list", list);

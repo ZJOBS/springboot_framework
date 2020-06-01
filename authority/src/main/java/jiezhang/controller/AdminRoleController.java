@@ -78,7 +78,7 @@ public class AdminRoleController extends BaseBindAndNotBindController<Admin, Adm
     public int unbindAdminRole(String adminId, String roleIds) {
         int flag = 0;
         try {
-            Map<String, Object> pmp = new HashMap<String, Object>();
+            Map<String, Object> pmp = new HashMap<String, Object>(2);
             pmp.put("adminId", adminId);
             List<String> list = Arrays.asList(roleIds.split(","));
             pmp.put("list", list);
