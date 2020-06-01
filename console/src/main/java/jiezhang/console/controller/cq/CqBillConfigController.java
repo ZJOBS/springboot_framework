@@ -21,14 +21,16 @@ public class CqBillConfigController extends BaseController<CqBillConfig, CqBillC
 
     @RequestMapping(value = "queryCqBillConfig")
     @ResponseBody
-    public DataTablePage<CqBillConfig> pageQuerycqBillConfig(CqBillConfig cqBillConfig) {
+    @Override
+    public DataTablePage<CqBillConfig> pageQuery(CqBillConfig cqBillConfig) {
         return super.pageQuery(cqBillConfig);
     }
 
     @RequestMapping(value = "addCqBillConfig")
     @ResponseBody
     @SystemLog(module = "长琴票据识别字段模块", methods = "添加字典")
-    public int addCqBillConfig(CqBillConfig cqBillConfig) {
+    @Override
+    public int add(CqBillConfig cqBillConfig) {
         return super.add(cqBillConfig);
     }
 
@@ -36,7 +38,8 @@ public class CqBillConfigController extends BaseController<CqBillConfig, CqBillC
     @RequestMapping(value = "deleteCqBillConfig")
     @ResponseBody
     @SystemLog(module = "长琴票据识别字段模块", methods = "删除字段")
-    public int deleteCqBillConfig(CqBillConfig cqBillConfig) {
+    @Override
+    public int delete(CqBillConfig cqBillConfig) {
         return super.delete(cqBillConfig);
     }
 
@@ -44,7 +47,8 @@ public class CqBillConfigController extends BaseController<CqBillConfig, CqBillC
     @RequestMapping(value = "updateCqBillConfig")
     @ResponseBody
     @SystemLog(module = "长琴票据识别字段模块", methods = "修改字典")
-    public int updateCqBillConfig(CqBillConfig cqBillConfig) {
+    @Override
+    public int update(CqBillConfig cqBillConfig) {
         return super.update(cqBillConfig);
     }
 
