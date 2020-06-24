@@ -10,7 +10,7 @@
     <description>SpringBoot工程</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>8</java.version>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
@@ -52,6 +52,11 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
             <dependency>
