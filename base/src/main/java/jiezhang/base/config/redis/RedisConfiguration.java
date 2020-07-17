@@ -8,6 +8,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -16,14 +17,38 @@ import java.time.Duration;
 @Configuration
 public class RedisConfiguration {
 
+//    @Bean(name = "redisTemplate")
+//    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+//        RedisTemplate<String, Object> template = new RedisTemplate();
+//        //使用fastjson序列化
+//        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+//        // value值的序列化采用 StringRedisSerializer
+//        template.setValueSerializer(stringRedisSerializer);
+//        template.setHashValueSerializer(stringRedisSerializer);
+//        // key的序列化采用StringRedisSerializer
+//        template.setKeySerializer(new StringRedisSerializer());
+//        template.setHashKeySerializer(new StringRedisSerializer());
+//        template.setConnectionFactory(redisConnectionFactory);
+//        return template;
+//    }
+
+    /**
+     * 注解redis，支持泛型使用
+     *
+     * @param redisConnectionFactory
+     * @return org.springframework.data.redis.core.RedisTemplate
+     * @author ZhangJie
+     * @description
+     * @date 3:29 下午 2020/7/17
+     */
     @Bean(name = "redisTemplate")
-    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<Object, Object> template = new RedisTemplate<>();
+    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate template = new RedisTemplate();
         //使用fastjson序列化
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        JdkSerializationRedisSerializer jdkSerializationRedisSerializer = new JdkSerializationRedisSerializer();
         // value值的序列化采用 StringRedisSerializer
-        template.setValueSerializer(stringRedisSerializer);
-        template.setHashValueSerializer(stringRedisSerializer);
+        template.setValueSerializer(jdkSerializationRedisSerializer);
+        template.setHashValueSerializer(jdkSerializationRedisSerializer);
         // key的序列化采用StringRedisSerializer
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
