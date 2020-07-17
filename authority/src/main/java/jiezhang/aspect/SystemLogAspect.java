@@ -23,6 +23,16 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+/**
+ * 日志过滤
+ *
+ * @param
+ * @author ZhangJie
+ * @description
+ * @date 4:22 下午 2020/7/16
+ * @return
+ */
 @Aspect
 @Component
 public class SystemLogAspect {
@@ -47,6 +57,9 @@ public class SystemLogAspect {
         UAI uai = (UAI) request.getSession().getAttribute(AuthorityConstant.UAI);
 
         String path = request.getServletPath();
+        if ("/".equals(path)) {
+            return pjp.proceed();
+        }
         if (path.startsWith("/index")) {
             //首页不需要拦截
             return pjp.proceed();
