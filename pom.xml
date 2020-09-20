@@ -10,7 +10,12 @@
     <description>SpringBoot工程</description>
 
     <properties>
-        <java.version>8</java.version>
+        <!--指定即生效 start -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <!--指定即生效 end -->
+
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
@@ -156,18 +161,20 @@
                 <version>${hutool.version}</version>
             </dependency>
 
-            <!--            -->
+            <!--七牛云-->
             <dependency>
                 <groupId>com.qiniu</groupId>
                 <artifactId>qiniu-java-sdk</artifactId>
-                <version>[7.2.0, 7.2.99]</version>
+                <version>[7.3.0, 7.3.99]</version>
             </dependency>
+
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>3.14.2</version>
                 <scope>compile</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.google.code.gson</groupId>
                 <artifactId>gson</artifactId>
@@ -186,7 +193,7 @@
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
-            <!--            -->
+            <!--    七牛云 end        -->
 
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -235,29 +242,23 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombck.version}</version>
-                <scope>provided</scope>
+                <!--                <scope>provided</scope>-->
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!--父工程中定义，子工程中就可以不用定义，统一jdk版本-->
+
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <!--  配置    spring-boot-devtools和springloaded 实现热部署       -->
+            <!--  配置    spring-boot-devtools和springloaded 实现热部署  start     -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
+                    <addResources>true</addResources>
                 </configuration>
             </plugin>
+            <!--  配置    spring-boot-devtools和springloaded 实现热部署  end      -->
         </plugins>
     </build>
 </project>

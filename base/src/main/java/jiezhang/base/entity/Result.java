@@ -1,6 +1,9 @@
 package jiezhang.base.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author ZhangJie
@@ -9,6 +12,8 @@ import lombok.Data;
  * @return
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Result {
     Boolean success;
     Integer code;
@@ -22,13 +27,7 @@ public class Result {
      * @date 5:42 下午 2020/3/3
      */
     public static Result ofSuccess() {
-        return new Result() {
-            {
-                setSuccess(Boolean.TRUE);
-                setCode(200);
-                setMsg("成功！");
-            }
-        };
+        return new Result(Boolean.TRUE, 200, "成功！", null);
     }
 
     /**
@@ -53,12 +52,6 @@ public class Result {
      * @date 5:43 下午 2020/3/3
      */
     public static Result ofFail(Integer code, String msg) {
-        return new Result() {
-            {
-                setSuccess(Boolean.FALSE);
-                setCode(code);
-                setMsg(msg);
-            }
-        };
+        return new Result(Boolean.FALSE, code, msg, null);
     }
 }

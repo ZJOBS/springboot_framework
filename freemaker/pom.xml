@@ -9,7 +9,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>JieZhang</groupId>
     <artifactId>freeMaker</artifactId>
     <version>${JieZhang.version}</version>
     <name>freeMaker</name>
