@@ -1,17 +1,11 @@
 package jiezhang.base.mapper;
 
 
-import jiezhang.base.annotation.Id;
-import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
-import jiezhang.base.entity.db.Dict;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 

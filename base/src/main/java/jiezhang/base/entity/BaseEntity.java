@@ -4,6 +4,7 @@ import jiezhang.base.annotation.Id;
 import jiezhang.base.annotation.PrimaryTableId;
 import jiezhang.base.utils.DataConversionUtil;
 import jiezhang.base.utils.JsonUtil;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @date 9:36 下午 2020/3/5
  * @return
  */
+@Data
 public class BaseEntity implements Serializable {
     protected String createUserName;
 
@@ -33,45 +35,45 @@ public class BaseEntity implements Serializable {
     protected String state;
 
 
-    public String getCreateUserName() {
-        return createUserName;
-    }
-
-    public void setCreateUserName(String createUserName) {
-        this.createUserName = createUserName;
-    }
-
-    public String getUpdateUserName() {
-        return updateUserName;
-    }
-
-    public void setUpdateUserName(String updateUserName) {
-        this.updateUserName = updateUserName;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
+//    public String getCreateUserName() {
+//        return createUserName;
+//    }
+//
+//    public void setCreateUserName(String createUserName) {
+//        this.createUserName = createUserName;
+//    }
+//
+//    public String getUpdateUserName() {
+//        return updateUserName;
+//    }
+//
+//    public void setUpdateUserName(String updateUserName) {
+//        this.updateUserName = updateUserName;
+//    }
+//
+//    public Date getCreateDate() {
+//        return createDate;
+//    }
+//
+//    public void setCreateDate(Date createDate) {
+//        this.createDate = createDate;
+//    }
+//
+//    public Date getUpdateDate() {
+//        return updateDate;
+//    }
+//
+//    public void setUpdateDate(Date updateDate) {
+//        this.updateDate = updateDate;
+//    }
+//
+//    public String getState() {
+//        return state;
+//    }
+//
+//    public void setState(String state) {
+//        this.state = state;
+//    }
 
     /**
      * 将对象转换为map

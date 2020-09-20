@@ -15,15 +15,17 @@
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
         <hutool.version>5.2.4</hutool.version>
-        <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
-        <JieZhang.version>0.0.1-SNAPSHOT</JieZhang.version>
         <tomcat-embed-jasper.versoon>9.0.17</tomcat-embed-jasper.versoon>
         <druid.version>1.1.21</druid.version>
         <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+        <mybatis-plus-boot-starter.version>3.3.1</mybatis-plus-boot-starter.version>
         <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
         <liquibase-core.version>3.8.7</liquibase-core.version>
         <jstl.version>1.2</jstl.version>
         <baidu.version>4.12.0</baidu.version>
+        <JieZhang.version>0.0.1-SNAPSHOT</JieZhang.version>
+        <lombck.version>1.18.12</lombck.version>
+
         <!--1.2.66-->
     </properties>
     <modules>
@@ -32,6 +34,7 @@
         <module>freeMaker</module>
         <module>console</module>
         <module>front</module>
+        <!--        <module>mq</module>-->
     </modules>
 
     <!--    <parent>-->
@@ -78,6 +81,12 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
 
@@ -222,6 +231,12 @@
                 <version>1.7.3-SNAPSHOT</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombck.version}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <!--父工程中定义，子工程中就可以不用定义，统一jdk版本-->
