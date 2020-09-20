@@ -2,14 +2,14 @@ package jiezhang.base.controller;
 
 import jiezhang.base.entity.BaseEntity;
 import jiezhang.base.entity.DataTablePage;
-import jiezhang.base.entity.db.Dict;
 import jiezhang.base.entity.db.UserAccount;
-import jiezhang.base.service.*;
+import jiezhang.base.service.BaseBindAndNotBindService;
+import jiezhang.base.service.QiNiuService;
+import jiezhang.base.service.SequenceService;
 import jiezhang.base.utils.DataConversionUtil;
 import jiezhang.base.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,9 +50,9 @@ public class BaseBindAndNotBindController<M extends BaseEntity, T extends BaseEn
 
     protected DataTablePage<F> createDataTablePage(M parameter) {
         DataTablePage<F> page = new DataTablePage<F>();
-        int sEcho = Integer.valueOf(getParameterInt("sEcho", 1));
-        int iDisplayStart = Integer.valueOf(getParameterInt("iDisplayStart", 1));
-        int iDisplayLength = Integer.valueOf(getParameterInt("iDisplayLength", 10));
+        int sEcho = getParameterInt("sEcho", 1);
+        int iDisplayStart = getParameterInt("iDisplayStart", 1);
+        int iDisplayLength = getParameterInt("iDisplayLength", 10);
 
         //排序参数
         //排序的列号
@@ -61,15 +61,15 @@ public class BaseBindAndNotBindController<M extends BaseEntity, T extends BaseEn
         String orderDir = getParameterString("sSortDir_0");
         //排序的列。注意，我认为页面上的列的名字要和表中列的名字一致，否则，会导致SQL拼接错误
         String orderColumn = getParameterString("mDataProp_" + order);
-        orderColumn = DataConversionUtil.underline(orderColumn).toString();
+        orderColumn = DataConversionUtil.underline(orderColumn);
         //加入排序数据
         Map<String, Object> pmp = parameter.toMap();
         pmp.put("orderColumn", orderColumn);
         pmp.put("orderDir", orderDir);
 
-        page.setsEcho(sEcho);
-        page.setiDisplayStart(iDisplayStart);
-        page.setiDisplayLength(iDisplayLength);
+        page.setSEcho(sEcho);
+        page.setIDisplayStart(iDisplayStart);
+        page.setIDisplayLength(iDisplayLength);
         page.setParams(pmp);
         return page;
     }

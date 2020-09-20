@@ -96,9 +96,9 @@ public class DataTablePaginationInterceptor implements Interceptor {
 
     @SuppressWarnings("rawtypes")
     private String getMysqlPageSql(DataTablePage page, StringBuffer sqlBuffer) {
-        int offset = page.getiDisplayStart();
+        int offset = page.getIDisplayStart();
         sqlBuffer.append(" limit ").append(offset).append(",")
-                .append(page.getiDisplayLength());
+                .append(page.getIDisplayLength());
         return sqlBuffer.toString();
     }
 
@@ -119,8 +119,8 @@ public class DataTablePaginationInterceptor implements Interceptor {
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 int totalRecord = rs.getInt(1);
-                page.setiTotalRecords(totalRecord);
-                page.setiTotalDisplayRecords(totalRecord);
+                page.setITotalRecords(totalRecord);
+                page.setITotalDisplayRecords(totalRecord);
             }
         } catch (SQLException e) {
             e.printStackTrace();

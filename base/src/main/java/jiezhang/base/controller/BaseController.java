@@ -63,9 +63,9 @@ public class BaseController<T extends BaseEntity, D extends BaseService<T, Excep
         pmp.put("orderColumn", orderColumn);
         pmp.put("orderDir", orderDir);
 
-        page.setsEcho(sEcho);
-        page.setiDisplayStart(iDisplayStart);
-        page.setiDisplayLength(iDisplayLength);
+        page.setSEcho(sEcho);
+        page.setIDisplayStart(iDisplayStart);
+        page.setIDisplayLength(iDisplayLength);
         page.setParams(pmp);
         return page;
     }
