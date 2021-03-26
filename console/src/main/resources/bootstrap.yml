@@ -1,9 +1,0 @@
-spring:
-  profiles:
-    active: test
-  cloud:
-    nacos:
-      config:
-        server-addr: 158.101.8.192:8848
-  application:
-    name: console

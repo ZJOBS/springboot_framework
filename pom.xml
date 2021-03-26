@@ -16,7 +16,7 @@
         <maven.compiler.target>8</maven.compiler.target>
         <!--指定即生效 end -->
 
-        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
         <hutool.version>5.2.4</hutool.version>
@@ -42,14 +42,15 @@
         <!--        <module>mq</module>-->
     </modules>
 
-    <!--    <parent>-->
-    <!--        <groupId>org.springframework.boot</groupId>-->
-    <!--        <artifactId>spring-boot-dependencies</artifactId>-->
-    <!--        <version>2.2.4.RELEASE</version>-->
-    <!--    </parent>-->
-
     <dependencyManagement>
         <dependencies>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--                <version>Greenwich.SR1</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -165,7 +166,7 @@
             <dependency>
                 <groupId>com.qiniu</groupId>
                 <artifactId>qiniu-java-sdk</artifactId>
-                <version>[7.3.0, 7.3.99]</version>
+                <version>7.4.0</version>
             </dependency>
 
             <dependency>
@@ -244,6 +245,14 @@
                 <version>${lombck.version}</version>
                 <!--                <scope>provided</scope>-->
             </dependency>
+
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                <version>2.2.1.RELEASE</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

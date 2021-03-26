@@ -133,6 +133,11 @@
             <groupId>com.internetitem</groupId>
             <artifactId>logback-elasticsearch-appender</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
