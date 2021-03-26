@@ -4,6 +4,7 @@ import jiezhang.service.MenuService;
 import jiezhang.base.service.RedisService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
@@ -18,19 +19,27 @@ import javax.servlet.ServletContext;
  * @date 2015/2/22
  */
 @Component
-public class InitAuthorityListener implements InitializingBean, ServletContextAware {
+public class InitAuthorityListener implements CommandLineRunner
+//        InitializingBean, ServletContextAware
+
+{
     @Autowired
     private MenuService menuService;
     @Autowired
     private RedisService redisService;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        menuService.updateRedisMenu();
-    }
+//    @Override
+//    public void afterPropertiesSet() throws Exception {
+//        menuService.updateRedisMenu();
+//    }
+//
+//    @Override
+//    public void setServletContext(ServletContext servletContext) {
+//        System.out.println("setServletContext");
+//    }
 
     @Override
-    public void setServletContext(ServletContext servletContext) {
-        System.out.println("setServletContext");
+    public void run(String... args) throws Exception {
+        menuService.updateRedisMenu();
     }
 }

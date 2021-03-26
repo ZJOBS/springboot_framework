@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * 其实不是MD5，MD5和这个加解密需要分开
@@ -37,9 +37,7 @@ public class MD5Util {
         return hexString.toString();
     }
 
-    public static boolean validPassword(String password, String passwordInDb)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException {
-
+    public static boolean validPassword(String password, String passwordInDb) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         byte[] pwdInDb = hexStringToByte(passwordInDb);
         byte[] salt = new byte[SALT_LENGTH];
         System.arraycopy(pwdInDb, 0, salt, 0, SALT_LENGTH);
@@ -56,8 +54,7 @@ public class MD5Util {
         }
     }
 
-    public static String getEncryptedPwd(String password)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static String getEncryptedPwd(String password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         byte[] pwd = null;
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[SALT_LENGTH];
@@ -71,5 +68,31 @@ public class MD5Util {
         System.arraycopy(salt, 0, pwd, 0, SALT_LENGTH);
         System.arraycopy(digest, 0, pwd, SALT_LENGTH, digest.length);
         return byteToHexString(pwd);
+    }
+
+    /**
+     * 未完成 根据请求参数计算出 加密密钥
+     *
+     * @param sortedMap
+     * @return java.lang.String
+     * @author ZhangJie
+     * @description
+     * @date 3:47 下午 2020/11/10
+     */
+    public static String getMD5Hash(SortedMap sortedMap) {
+        StringBuffer sb = new StringBuffer();
+        Set es = sortedMap.entrySet();
+        Iterator it = es.iterator();
+        while (it.hasNext()) {
+            Map.Entry entry = (Map.Entry) it.next();
+            String k = (String) entry.getKey();
+            Object v = entry.getValue();
+            if (null != v && !"".equals(v)) {
+                sb.append(k + "=" + v + "&");
+            }
+        }
+
+//        String result = new getEncryptedPwd(sb.toString(), salt, 2).toString();
+        return "";
     }
 }

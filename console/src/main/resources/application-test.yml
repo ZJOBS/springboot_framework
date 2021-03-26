@@ -4,7 +4,7 @@ database-type: mysql
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.103.158.236:3306/zhang?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://158.101.8.192:3306/zhang?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource

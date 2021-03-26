@@ -31,7 +31,7 @@ public class SnowflakeSequenceImpl implements SequenceService {
      */
     @Override
     public synchronized long getSequence() {
-        Snowflake snowflake = IdUtil.createSnowflake(Integer.valueOf(this.machineId), Integer.valueOf(this.dataCenterId));
+        Snowflake snowflake = IdUtil.getSnowflake(Integer.valueOf(this.machineId), Integer.valueOf(this.dataCenterId));
         return snowflake.nextId();
     }
 
