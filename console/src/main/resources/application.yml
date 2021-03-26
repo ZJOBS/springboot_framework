@@ -28,14 +28,14 @@ spring:
 #      allow_single_quotes: true
 
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:/changelog/db.changelog-master.xml
   redis:
     database: 0
-    host: 47.103.158.236
-    port: 6379
+    host: redis-14488.c246.us-east-1-4.ec2.cloud.redislabs.com
+    port: 14488
     timeout: 1000
-    password: 123456
+    password: byzjiq-zihxaf-qeCvo0
     jedis:
       pool:
         max-active: 20
