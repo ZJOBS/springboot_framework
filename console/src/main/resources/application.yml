@@ -3,6 +3,8 @@ server:
   servlet:
     context-path: /console
 spring:
+  application:
+    name: console
   profiles:
     active: test
   http:
@@ -49,7 +51,6 @@ mybatis:
   mapper-locations: classpath*:*mapper/**/*Mapper.xml
   type-aliases-package: jiezhang
 
-
 properties:
   server_dataCenterId: 1
   server_machineId: 1
@@ -59,4 +60,6 @@ properties:
   video: video
   imagePath: http://omjgaayha.bkt.clouddn.com
 
-
+#nacos:
+#  config:
+#    server-addr: 158.101.8.192:8848

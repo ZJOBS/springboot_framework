@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import jiezhang.base.constant.RedisConstants;
 import jiezhang.base.service.AbstractService;
+import jiezhang.base.service.RedisService;
 import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.Menu;
 import jiezhang.mapper.MenuMapper;
@@ -27,11 +28,12 @@ import java.util.Map;
 @Service
 public class MenuServiceImpl extends AbstractService<Menu, MenuMapper> implements MenuService {
 
+
     @Autowired
     private AdminService adminService;
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisService redisService;
 
     @Override
     public void updateRedisMenu() throws Exception {
@@ -41,7 +43,7 @@ public class MenuServiceImpl extends AbstractService<Menu, MenuMapper> implement
         for (Admin admin : adminList) {
             menuList = findMenuByAdminId(admin.getAdminId());
             array = treeMenuList(menuList, "00");
-            redisTemplate.boundHashOps(RedisConstants.MENU).put(RedisConstants.ADMIN + admin.getAdminId(), array.toString());
+            redisService.put(RedisConstants.MENU, RedisConstants.ADMIN + admin.getAdminId(), array.toString());
         }
     }
 
@@ -82,4 +84,5 @@ public class MenuServiceImpl extends AbstractService<Menu, MenuMapper> implement
         pmp.put("adminId", adminId);
         return mapper.selectMenuByAdminId(pmp);
     }
+
 }

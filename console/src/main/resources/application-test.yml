@@ -9,7 +9,8 @@ spring:
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
   rabbitmq:
-    username: admin
-    password: 123456
-    host: 47.103.158.236
-    port: 5672
+    username: avbjxwvp:avbjxwvp
+    password: mEEmPE3K41WkR4T1YDaCUGSqI1SEww4S
+    host: barnacle.rmq.cloudamqp.com
+    port: 1883
+    virtual-host: avbjxwvp
