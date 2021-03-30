@@ -39,3 +39,7 @@ spring:
   data:
     mongodb:
       uri: mongodb+srv://zhangjie:1q2w3e4r@cluster0.0zlpt.mongodb.net/zhang?retryWrites=true&w=majority
+    elasticsearch:
+      client:
+        reactive:
+          endpoints: https://371pw9xj3b:jbjksimfb3@zhang-es-test-9643593420.us-east-1.bonsaisearch.net:443
