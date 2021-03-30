@@ -14,6 +14,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -39,6 +40,9 @@ public class SystemLogAspect {
 
     @Autowired
     private LogService logService;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     /**
      * 配置接入点,如果不知道怎么配置,可以百度一下规则
@@ -120,11 +124,13 @@ public class SystemLogAspect {
                     log.setResult("执行成功！");
                     //保存进数据库
                     logService.createEntity(log);
+                    mongoTemplate.save(log);
                 } catch (Throwable e) {
                     long end = System.currentTimeMillis();
                     log.setResponseDate("" + (end - start));
                     log.setResult("执行失败");
                     logService.createEntity(log);
+                    mongoTemplate.save(log);
                 }
             } else {//没有包含注解
                 object = pjp.proceed();

@@ -5,6 +5,7 @@ import jiezhang.base.annotation.Id;
 import jiezhang.base.annotation.TableName;
 import jiezhang.base.entity.BaseEntity;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * 日志
@@ -13,6 +14,7 @@ import lombok.Data;
  */
 @TableName(name = "system_log")
 @Data
+@Document("system_log")
 public class Log extends BaseEntity {
     /**
      * 日志编号

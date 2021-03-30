@@ -17,6 +17,7 @@
         <!--指定即生效 end -->
 
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <alibaba.nacos.version>2.2.1.RELEASE</alibaba.nacos.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
         <hutool.version>5.2.4</hutool.version>
@@ -250,9 +251,19 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>${alibaba.nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${alibaba.nacos.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,0 +1,25 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /front
+  application:
+    name: front
+  profiles:
+    active: test
+  http:
+    encoding:
+      force: true
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 158.101.8.192:8848
+  liquibase:
+    enabled: false
+    change-log: classpath:/changelog/db.changelog-master.xml
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:*mapper/**/*Mapper.xml
+  type-aliases-package: jiezhang
