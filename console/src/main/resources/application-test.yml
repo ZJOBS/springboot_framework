@@ -38,4 +38,4 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://zhang:pdn8p8CCmzdRBFKj@zhang-mongodb-free.fqt0x.mongodb.net/zhang?retryWrites=true&w=majority
+      uri: mongodb+srv://zhangjie:1q2w3e4r@cluster0.0zlpt.mongodb.net/zhang?retryWrites=true&w=majority

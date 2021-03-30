@@ -1,14 +1,19 @@
 package jiezhang.console.controller;
 
+import cn.hutool.json.JSONUtil;
 import jiezhang.entity.db.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -41,10 +46,20 @@ public class ConfigController {
     @ResponseBody
     public String mongodbInsert() {
         Log log = new Log();
-        log.setLogId("1L");
+        log.setLogId("3L");
         log.setIp("22");
+        mongoTemplate.save(log);
+        log.setLogId("4L");
+        mongoTemplate.save(log);
+        log.setLogId("5L");
         mongoTemplate.save(log);
         return useLocalCache;
     }
 
+    @RequestMapping(value = "/mongodbQuery", method = GET)
+    @ResponseBody
+    public String mongodbQuery() {
+        List<Log> list = mongoTemplate.find(Query.query(Criteria.where("ip").is("22")), Log.class);
+        return JSONUtil.toJsonStr(list);
+    }
 }
