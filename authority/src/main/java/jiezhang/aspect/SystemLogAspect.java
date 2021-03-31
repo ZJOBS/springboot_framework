@@ -5,11 +5,10 @@ import jiezhang.entity.UAI;
 import jiezhang.entity.db.Log;
 import jiezhang.entity.db.SystemLog;
 import jiezhang.service.LogService;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,12 +47,12 @@ public class SystemLogAspect {
      * 配置接入点,如果不知道怎么配置,可以百度一下规则
      */
     //匹配多个项目路径不一致情况，因为console项目没有controller，没有试验过
-    @Pointcut("execution(* jiezhang.*.controller..*.*(..))")
+    @Pointcut("@annotation(jiezhang.entity.db.SystemLog)")
     private void controllerAspect() {
     }//定义一个切入点
 
-    @Around("controllerAspect()")
-    public Object around(ProceedingJoinPoint pjp) throws Throwable {
+    @Around("controllerAspect()&& @annotation(systemLog)")
+    public Object around(ProceedingJoinPoint pjp, SystemLog systemLog) throws Throwable {
         //常见日志实体对象
         Log log = new Log();
         //获取登录用户账户
@@ -112,28 +111,23 @@ public class SystemLogAspect {
         }
         if (null != method) {
             // 判断是否包含自定义的注解，说明一下这里的SystemLog就是我自己自定义的注解
-            if (method.isAnnotationPresent(SystemLog.class)) {
-                SystemLog systemlog = method.getAnnotation(SystemLog.class);
-                log.setModuleName(systemlog.module());
-                log.setMethod(systemlog.methods());
-                try {
-                    object = pjp.proceed();
-                    long end = System.currentTimeMillis();
-                    //将计算好的时间保存在实体中
-                    log.setResponseDate("" + (end - start));
-                    log.setResult("执行成功！");
-                    //保存进数据库
-                    logService.createEntity(log);
-                    mongoTemplate.save(log);
-                } catch (Throwable e) {
-                    long end = System.currentTimeMillis();
-                    log.setResponseDate("" + (end - start));
-                    log.setResult("执行失败");
-                    logService.createEntity(log);
-                    mongoTemplate.save(log);
-                }
-            } else {//没有包含注解
+            log.setModuleName(systemLog.module());
+            log.setMethod(systemLog.methods());
+            try {
                 object = pjp.proceed();
+                long end = System.currentTimeMillis();
+                //将计算好的时间保存在实体中
+                log.setResponseDate("" + (end - start));
+                log.setResult("执行成功！");
+                //保存进数据库
+                logService.createEntity(log);
+                mongoTemplate.save(log);
+            } catch (Throwable e) {
+                long end = System.currentTimeMillis();
+                log.setResponseDate("" + (end - start));
+                log.setResult("执行失败");
+                logService.createEntity(log);
+                mongoTemplate.save(log);
             }
         } else { //不需要拦截直接执行
             object = pjp.proceed();
@@ -159,56 +153,17 @@ public class SystemLogAspect {
         return ip;
     }
 
+    @AfterThrowing(value = "@annotation(jiezhang.entity.db.SystemLog)", throwing = "e")
+    private void doAfterThrow(JoinPoint joinPoint, Throwable e) {
 
-    /**
-     * 获取注解中对方法的描述信息 用于Controller层注解
-     *
-     * @param joinPoint 切点
-     * @return 方法描述
-     * @throws Exception
-     */
-    public static String getControllerMethodDescription(ProceedingJoinPoint joinPoint) throws Exception {
-        String targetName = joinPoint.getTarget().getClass().getName();
-        String methodName = joinPoint.getSignature().getName();
-        Object[] arguments = joinPoint.getArgs();
-        Class targetClass = Class.forName(targetName);
-        Method[] methods = targetClass.getMethods();
-        String description = "";
-        for (Method method : methods) {
-            if (method.getName().equals(methodName)) {
-                Class[] clazzs = method.getParameterTypes();
-                if (clazzs.length == arguments.length) {
-                    description = method.getAnnotation(SystemLog.class).methods();
-                    break;
-                }
-            }
-        }
-        return description;
     }
 
-    /**
-     * 获取注解中对方法的模块描述信息 用于Controller层注解
-     *
-     * @param joinPoint 切点
-     * @return 方法描述
-     * @throws Exception
-     */
-    public static String getControllerModuleDescription(ProceedingJoinPoint joinPoint) throws Exception {
-        String targetName = joinPoint.getTarget().getClass().getName();
-        String methodName = joinPoint.getSignature().getName();
-        Object[] arguments = joinPoint.getArgs();
-        Class targetClass = Class.forName(targetName);
-        Method[] methods = targetClass.getMethods();
-        String description = "";
-        for (Method method : methods) {
-            if (method.getName().equals(methodName)) {
-                Class[] clazzs = method.getParameterTypes();
-                if (clazzs.length == arguments.length) {
-                    description = method.getAnnotation(SystemLog.class).module();
-                    break;
-                }
-            }
-        }
-        return description;
+
+    //主体方法异常，依然会走 after的方法
+    @After("controllerAspect()")
+    public void destroyUserFunction(JoinPoint joinPoint) {
+
     }
+
+
 }
