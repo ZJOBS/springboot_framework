@@ -1,0 +1,148 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="system_dictionary_create" author="zhang">
+        <sql>
+            CREATE TABLE system_dictionary (
+            dict_id varchar(20) NOT NULL,
+            code varchar(45) NOT NULL,
+            value varchar(45) DEFAULT NULL,
+            activating tinyint(1) NOT NULL DEFAULT 0,
+            name varchar(45) DEFAULT NULL,
+            parent_id varchar(20) DEFAULT '0',
+            PRIMARY KEY (dict_id),
+            UNIQUE KEY id_UNIQUE (dict_id)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+        </sql>
+    </changeSet>
+
+    <changeSet id="system_dictionary_gander_add" author="zhang">
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="1"/>
+            <column name="name" value="性别"/>
+            <column name="code" value="GANDER"/>
+            <column name="value" value=""/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="0"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="10"/>
+            <column name="name" value="女"/>
+            <column name="code" value="GANDER"/>
+            <column name="value" value="0"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="1"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="11"/>
+            <column name="name" value="男"/>
+            <column name="code" value="GANDER"/>
+            <column name="value" value="1"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="system_dictionary_state_add" author="zhang" runOnChange="true">
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="2"/>
+            <column name="name" value="状态"/>
+            <column name="code" value="STATE"/>
+            <column name="value" value=""/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="0"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="20"/>
+            <column name="name" value="禁用"/>
+            <column name="code" value="STATE"/>
+            <column name="value" value="0"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="2"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="21"/>
+            <column name="name" value="启用"/>
+            <column name="code" value="STATE"/>
+            <column name="value" value="1"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="2"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="system_dictionary_country_add" author="zhang" runOnChange="true">
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="3"/>
+            <column name="name" value="国家"/>
+            <column name="code" value="COUNTRY"/>
+            <column name="value" value=""/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="0"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="31"/>
+            <column name="name" value="中国"/>
+            <column name="code" value="COUNTRY"/>
+            <column name="value" value="CH"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="3"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="32"/>
+            <column name="name" value="日本"/>
+            <column name="code" value="COUNTRY"/>
+            <column name="value" value="JP"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="3"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="33"/>
+            <column name="name" value="美国"/>
+            <column name="code" value="COUNTRY"/>
+            <column name="value" value="USA"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="system_dictionary_push_add" author="zhang" runOnChange="true">
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="4"/>
+            <column name="name" value="推送"/>
+            <column name="code" value="PUSH"/>
+            <column name="value" value=""/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="0"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="40"/>
+            <column name="name" value="消息"/>
+            <column name="code" value="PUSH"/>
+            <column name="value" value="1"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="4"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="41"/>
+            <column name="name" value="提醒"/>
+            <column name="code" value="PUSH"/>
+            <column name="value" value="2"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="4"/>
+        </insert>
+        <insert tableName="system_dictionary">
+            <column name="dict_id" value="42"/>
+            <column name="name" value="通知"/>
+            <column name="code" value="PUSH"/>
+            <column name="value" value="3"/>
+            <column name="activating" value="1"/>
+            <column name="parent_id" value="4"/>
+        </insert>
+    </changeSet>
+
+
+
+</databaseChangeLog>

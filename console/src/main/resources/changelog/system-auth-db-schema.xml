@@ -5,36 +5,6 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
 
-    <changeSet id="system_dictionary_create" author="zhang">
-        <sql>
-            CREATE TABLE system_dictionary (
-            dict_id varchar(20) NOT NULL,
-            code varchar(45) NOT NULL,
-            value varchar(45) DEFAULT NULL,
-            activating tinyint(1) NOT NULL DEFAULT 0,
-            name varchar(45) DEFAULT NULL,
-            parent_id varchar(20) DEFAULT '0',
-            PRIMARY KEY (dict_id),
-            UNIQUE KEY id_UNIQUE (dict_id)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-        </sql>
-    </changeSet>
-
-    <changeSet id="system_log_create" author="zhang">
-        <sql>
-            CREATE TABLE `system_log` (
-            `log_id` varchar(20) NOT NULL,
-            `admin_id` varchar(20) NOT NULL,
-            `module_name` varchar(45) NOT NULL,
-            `method` varchar(45) NOT NULL,
-            `response_date` varchar(45) DEFAULT NULL,
-            `ip` varchar(45) NOT NULL,
-            `result` varchar(45) DEFAULT NULL,
-            `date_time` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-            PRIMARY KEY (`log_id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-        </sql>
-    </changeSet>
 
     <changeSet id="system_admin_create" author="zhang">
         <sql>
@@ -88,7 +58,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="system_menu_add" author="zhang">
+    <changeSet id="system_menu_add" author="zhang" runOnChange="true">
         <insert tableName="system_menu">
             <column name="menu_id" value="1"/>
             <column name="parent_id" value="00"/>
@@ -126,6 +96,39 @@
             <column name="parent_id" value="1"/>
             <column name="name" value="菜单管理"/>
             <column name="url" value="menuIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+
+        <insert tableName="system_menu">
+            <column name="menu_id" value="2"/>
+            <column name="parent_id" value="00"/>
+            <column name="name" value="运营管理"/>
+            <column name="activating" value="1"/>
+            <column name="image" value="fa-cog"/>
+            <column name="leaf" value="0"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="21"/>
+            <column name="parent_id" value="2"/>
+            <column name="name" value="日志管理"/>
+            <column name="url" value="logIndex"/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="22"/>
+            <column name="parent_id" value="2"/>
+            <column name="name" value="定时任务"/>
+            <column name="url" value=""/>
+            <column name="activating" value="1"/>
+            <column name="leaf" value="1"/>
+        </insert>
+        <insert tableName="system_menu">
+            <column name="menu_id" value="23"/>
+            <column name="parent_id" value="2"/>
+            <column name="name" value="敏感词"/>
+            <column name="url" value=""/>
             <column name="activating" value="1"/>
             <column name="leaf" value="1"/>
         </insert>
@@ -217,18 +220,4 @@
         </insert>
     </changeSet>
 
-    <!-- 消息通知 -->
-    <changeSet id="system_message_create" author="zhang">
-        <sql>
-            create table system_message (
-            message_id varchar(20) not null,
-            type int not null comment '类型',
-            message text null,
-            see tinyint(1) default 0 not null comment '是否查看 0 未读 1 已读',
-            jump varchar(255) null comment '跳转',
-            PRIMARY KEY (message_id),
-            UNIQUE KEY id_UNIQUE (message_id)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-        </sql>
-    </changeSet>
 </databaseChangeLog>
