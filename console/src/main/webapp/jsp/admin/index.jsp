@@ -16,7 +16,6 @@
         function formatActivating(data, type, full) {
             return data == 0 ? '未激活' : '激活';
         };
-
         function formatImage(data, type, full) {
             var URL = "http://omjgaayha.bkt.clouddn.com/" + data;
             return "<img src='" + URL + "' height='50' width='50'/>"
@@ -50,17 +49,12 @@
                                 <div>
                                     <div id="search" class="ibox-tools">
                                         <form>
-                                            <input placeholder="名称" id="name" type="text" name="name"
-                                                   class="col-xs-10 col-sm-1"/>
-                                            <a id="btn_search" class="btn btn-primary btn-sm" href="javascript:void(0)"><i
-                                                    class="fa fa-search"></i>搜索</a>
-                                            <a id="btn_clear_search" class="btn btn-primary btn-sm"
-                                               href="javascript:void(0)"><i class="fa fa-search"></i>清空</a>
-                                            <a id="add" class="btn btn-primary btn-sm" href="javascript:void(0)"><i
-                                                    class="fa fa-plus"></i>添加</a>
+                                            <input placeholder="名称" id="name" type="text" name="name" class="input-small"/>
+                                            <a id="btn_search" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a>
+                                            <a id="btn_clear_search" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="fa fa-search"></i>清空</a>
+                                            <a id="add" class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="fa fa-plus"></i>添加</a>
                                         </form>
                                     </div>
-
                                     <zj:tableColumn id="admin" key="adminId" defaultOperation="YES"
                                                     search="#search"
                                                     queryUrl="/queryAdmin"
@@ -68,7 +62,12 @@
                                                     editUrl="/updateAdmin"
                                                     deleteUrl="/deleteAdmin"
                                                     columnTitle="编号,姓名,头像,是否激活,描述"
-                                                    columnName="{'mData': 'adminId'},{'mData': 'name'},{'mData': 'avatar'},{'mData': 'activating','type':'checkbox'},{'mData': 'description'}"
+                                                    columnName="
+                                                    {'mData': 'adminId'},
+                                                    {'mData': 'name'},
+                                                    {'mData': 'avatar'},
+                                                    {'mData': 'activating','type':'checkbox'},
+                                                    {'mData': 'description'}"
                                                     customOperation="showRole()"
                                                     columnFormat="{'aTargets': 3, 'mRender': formatActivating}"
                                                     formId="dialog-confirm"

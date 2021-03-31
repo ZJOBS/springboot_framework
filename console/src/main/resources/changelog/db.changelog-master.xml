@@ -6,8 +6,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-
     <include file="classpath:changelog/system-dictionary-db-schema.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:changelog/system-log-db-schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:changelog/system-message-db-schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:changelog/system-auth-db-schema.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

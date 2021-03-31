@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!-- 消息通知 -->
+    <changeSet id="system_message_create" author="zhang">
+        <sql>
+            create table zhang.system_log (
+            log_id        varchar(20)                           not null
+            primary key,
+            admin_id      varchar(20)                           not null,
+            module_name   varchar(45)                           not null,
+            method        varchar(45)                           not null,
+            response_date varchar(45)                           null,
+            ip            varchar(45)                           not null,
+            result        varchar(45)                           null,
+            date_time     timestamp default current_timestamp() null on update current_timestamp()
+            )
+            charset = utf8mb4;
+        </sql>
+    </changeSet>
+</databaseChangeLog>
