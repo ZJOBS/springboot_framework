@@ -1,7 +1,6 @@
 package jiezhang.controller;
 
-import jiezhang.base.controller.BaseController;
-import jiezhang.base.entity.DataTablePage;
+import jiezhang.entity.DataTablePage;
 import jiezhang.constant.AuthorityConstant;
 import jiezhang.entity.UAI;
 import jiezhang.entity.db.Admin;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**

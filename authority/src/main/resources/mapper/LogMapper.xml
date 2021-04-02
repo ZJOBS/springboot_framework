@@ -17,7 +17,7 @@
         <include refid="where"/>
     </select>
 
-    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+    <select id="queryDataTablePage" parameterType="jiezhang.entity.DataTablePage"
             resultType="jiezhang.entity.db.Log">
         SELECT * FROM
         <include refid="table_name"/>

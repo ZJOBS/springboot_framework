@@ -1,6 +1,5 @@
 package jiezhang.console.controller;
 
-import jiezhang.base.controller.BaseController;
 import org.springframework.stereotype.Controller;
 
 @Controller

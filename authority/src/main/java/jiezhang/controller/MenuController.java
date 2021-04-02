@@ -3,14 +3,10 @@ package jiezhang.controller;
 import jiezhang.entity.db.Menu;
 import jiezhang.entity.db.SystemLog;
 import jiezhang.service.MenuService;
-import jiezhang.base.controller.BaseController;
-import jiezhang.base.entity.DataTablePage;
-import org.springframework.beans.factory.annotation.Autowired;
+import jiezhang.entity.DataTablePage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户控制

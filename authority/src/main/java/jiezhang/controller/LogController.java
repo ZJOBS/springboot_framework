@@ -1,12 +1,10 @@
 package jiezhang.controller;
 
 
-import jiezhang.base.entity.DataTablePage;
+import jiezhang.entity.DataTablePage;
 import jiezhang.entity.db.Log;
 import jiezhang.service.LogService;
-import jiezhang.base.controller.BaseController;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

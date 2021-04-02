@@ -1,7 +1,7 @@
 package jiezhang.entity.db;
 
-import jiezhang.base.annotation.Id;
-import jiezhang.base.entity.BaseEntity;
+import jiezhang.annotation.Id;
+import jiezhang.entity.BaseEntity;
 import lombok.Data;
 
 @Data

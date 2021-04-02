@@ -2,7 +2,6 @@ package jiezhang.service;
 
 
 import jiezhang.entity.db.Log;
-import jiezhang.base.service.BaseService;
 
 /**
  * 日志服务

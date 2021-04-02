@@ -2,7 +2,6 @@ package jiezhang.service;
 
 
 import jiezhang.entity.db.Admin;
-import jiezhang.base.service.BaseService;
 
 import java.util.List;
 

@@ -2,7 +2,6 @@ package jiezhang.service;
 
 
 import jiezhang.entity.db.Role;
-import jiezhang.base.service.BaseService;
 
 /**
  * 角色服务接口

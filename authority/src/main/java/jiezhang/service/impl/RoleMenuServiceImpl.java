@@ -5,7 +5,7 @@ import jiezhang.entity.db.Role;
 import jiezhang.entity.db.RoleMenu;
 import jiezhang.mapper.RoleMenuMapper;
 import jiezhang.service.RoleMenuService;
-import jiezhang.base.service.AbstractBindAndNotBindService;
+import jiezhang.service.AbstractBindAndNotBindService;
 import org.springframework.stereotype.Service;
 
 /**

@@ -1,7 +1,6 @@
 package jiezhang.controller;
 
-import jiezhang.base.controller.BaseBindAndNotBindController;
-import jiezhang.base.entity.DataTablePage;
+import jiezhang.entity.DataTablePage;
 import jiezhang.entity.db.Menu;
 import jiezhang.entity.db.Role;
 import jiezhang.entity.db.RoleMenu;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jiezhang.mapper.AdminRoleMapper">
-    <select id="queryBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
+    <select id="queryBindDataTablePage" parameterType="jiezhang.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
         SELECT sr.*
         FROM system_role sr
         LEFT JOIN system_admin_role sar ON sr.role_id = sar.role_id
@@ -11,7 +11,7 @@
         </where>
     </select>
 
-    <select id="queryNotBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
+    <select id="queryNotBindDataTablePage" parameterType="jiezhang.entity.DataTablePage" resultType="jiezhang.entity.db.Role">
         SELECT *
         FROM system_role sr
         WHERE NOT exists(

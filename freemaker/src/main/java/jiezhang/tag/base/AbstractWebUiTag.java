@@ -4,8 +4,8 @@ import cn.hutool.core.util.StrUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import jiezhang.base.context.SpringContext;
-import jiezhang.base.service.RedisService;
+import jiezhang.context.SpringContext;
+import jiezhang.service.RedisService;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.servlet.jsp.JspException;

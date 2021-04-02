@@ -5,7 +5,7 @@ import jiezhang.entity.db.AdminRole;
 import jiezhang.entity.db.Role;
 import jiezhang.mapper.AdminRoleMapper;
 import jiezhang.service.AdminRoleService;
-import jiezhang.base.service.AbstractBindAndNotBindService;
+import jiezhang.service.AbstractBindAndNotBindService;
 import org.springframework.stereotype.Service;
 
 /**

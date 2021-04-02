@@ -2,7 +2,6 @@ package jiezhang.mapper;
 
 
 import jiezhang.entity.db.Role;
-import jiezhang.base.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

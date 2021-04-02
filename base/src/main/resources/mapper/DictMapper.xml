@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="jiezhang.base.mapper.DictMapper">
+<mapper namespace="jiezhang.mapper.DictMapper">
     <update id="updateEntity" parameterType="java.util.Map">
         UPDATE
         <include refid="table_name"/>
@@ -9,7 +9,7 @@
     </update>
 
     <select id="selectEntity" parameterType="java.util.Map"
-            resultType="jiezhang.base.entity.db.Dict">
+            resultType="jiezhang.entity.db.Dict">
         SELECT
         <include refid="result_base"/>
         FROM
@@ -17,8 +17,8 @@
         <include refid="where"/>
     </select>
 
-    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
-            resultType="jiezhang.base.entity.db.Dict">
+    <select id="queryDataTablePage" parameterType="jiezhang.entity.DataTablePage"
+            resultType="jiezhang.entity.db.Dict">
         SELECT * FROM
         <include refid="table_name"/>
         <where>
@@ -46,7 +46,7 @@
         </if>
     </select>
 
-    <select id="selectAll" resultType="jiezhang.base.entity.db.Dict">
+    <select id="selectAll" resultType="jiezhang.entity.db.Dict">
         SELECT * FROM
         <include refid="table_name"/>
     </select>

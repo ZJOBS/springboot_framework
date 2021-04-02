@@ -1,6 +1,6 @@
 package jiezhang.console.service.impl;
 
-import jiezhang.base.context.SpringContext;
+import jiezhang.context.SpringContext;
 import jiezhang.console.config.SubscribeListener;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;

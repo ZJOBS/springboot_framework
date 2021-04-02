@@ -2,16 +2,15 @@ package jiezhang.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import jiezhang.base.constant.RedisConstants;
-import jiezhang.base.service.AbstractService;
-import jiezhang.base.service.RedisService;
+import jiezhang.constant.RedisConstants;
+import jiezhang.service.AbstractService;
+import jiezhang.service.RedisService;
 import jiezhang.entity.db.Admin;
 import jiezhang.entity.db.Menu;
 import jiezhang.mapper.MenuMapper;
 import jiezhang.service.AdminService;
 import jiezhang.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

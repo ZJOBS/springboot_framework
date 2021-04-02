@@ -3,9 +3,9 @@ package jiezhang.service.impl;
 import jiezhang.entity.db.Admin;
 import jiezhang.mapper.AdminMapper;
 import jiezhang.service.AdminService;
-import jiezhang.base.entity.DataTablePage;
-import jiezhang.base.service.AbstractService;
-import jiezhang.base.utils.EncryptAndDecryptUtil;
+import jiezhang.entity.DataTablePage;
+import jiezhang.service.AbstractService;
+import jiezhang.utils.EncryptAndDecryptUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

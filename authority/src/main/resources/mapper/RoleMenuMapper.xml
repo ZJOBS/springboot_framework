@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jiezhang.mapper.RoleMenuMapper">
-    <select id="queryBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+    <select id="queryBindDataTablePage" parameterType="jiezhang.entity.DataTablePage"
             resultType="jiezhang.entity.db.Menu">
         SELECT sm.*
         FROM system_menu sm
@@ -12,7 +12,7 @@
         </where>
     </select>
 
-    <select id="queryNotBindDataTablePage" parameterType="jiezhang.base.entity.DataTablePage"
+    <select id="queryNotBindDataTablePage" parameterType="jiezhang.entity.DataTablePage"
             resultType="jiezhang.entity.db.Menu">
         SELECT *
         FROM system_menu sm

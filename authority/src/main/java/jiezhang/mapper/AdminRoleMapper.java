@@ -3,7 +3,6 @@ package jiezhang.mapper;
 
 import jiezhang.entity.db.AdminRole;
 import jiezhang.entity.db.Role;
-import jiezhang.base.mapper.BaseBindAndNotBindMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -4,7 +4,6 @@ package jiezhang.service;
 import jiezhang.entity.db.Menu;
 import jiezhang.entity.db.Role;
 import jiezhang.entity.db.RoleMenu;
-import jiezhang.base.service.BaseBindAndNotBindService;
 
 /**
  * 角色菜单接口

@@ -1,11 +1,11 @@
 package jiezhang.entity.db;
 
 
-import jiezhang.base.annotation.ForeignTableId;
-import jiezhang.base.annotation.Id;
-import jiezhang.base.annotation.PrimaryTableId;
-import jiezhang.base.annotation.TableName;
-import jiezhang.base.entity.BaseEntity;
+import jiezhang.annotation.ForeignTableId;
+import jiezhang.annotation.Id;
+import jiezhang.annotation.PrimaryTableId;
+import jiezhang.annotation.TableName;
+import jiezhang.entity.BaseEntity;
 import lombok.Data;
 
 /**

@@ -29,7 +29,7 @@
         </where>
     </select>
 
-    <select id="queryDataTablePage" parameterType="jiezhang.base.entity.DataTablePage" resultType="jiezhang.entity.db.Menu">
+    <select id="queryDataTablePage" parameterType="jiezhang.entity.DataTablePage" resultType="jiezhang.entity.db.Menu">
         SELECT * FROM
         <include refid="table_name"/>
         <where>

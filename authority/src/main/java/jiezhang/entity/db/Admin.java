@@ -2,9 +2,9 @@ package jiezhang.entity.db;
 
 
 
-import jiezhang.base.annotation.Id;
-import jiezhang.base.annotation.TableName;
-import jiezhang.base.entity.BaseEntity;
+import jiezhang.annotation.Id;
+import jiezhang.annotation.TableName;
+import jiezhang.entity.BaseEntity;
 import lombok.Data;
 
 /**

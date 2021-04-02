@@ -43,3 +43,5 @@ spring:
       client:
         reactive:
           endpoints: https://371pw9xj3b:jbjksimfb3@zhang-es-test-9643593420.us-east-1.bonsaisearch.net:443
+          username: 371pw9xj3b
+          password: jbjksimfb3

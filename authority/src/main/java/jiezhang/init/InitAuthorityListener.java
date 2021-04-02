@@ -1,14 +1,10 @@
 package jiezhang.init;
 
 import jiezhang.service.MenuService;
-import jiezhang.base.service.RedisService;
-import org.springframework.beans.factory.InitializingBean;
+import jiezhang.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.ServletContextAware;
-
-import javax.servlet.ServletContext;
 
 //import zjobs.service.DictService;
 

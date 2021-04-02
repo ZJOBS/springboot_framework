@@ -3,7 +3,7 @@ package jiezhang.service.impl;
 import jiezhang.entity.db.Log;
 import jiezhang.mapper.LogMapper;
 import jiezhang.service.LogService;
-import jiezhang.base.service.AbstractService;
+import jiezhang.service.AbstractService;
 import org.springframework.stereotype.Service;
 
 /**

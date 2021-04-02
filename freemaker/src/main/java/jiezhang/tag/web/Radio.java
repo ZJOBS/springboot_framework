@@ -3,7 +3,7 @@ package jiezhang.tag.web;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import jiezhang.tag.base.FormTag;
-import jiezhang.base.constant.RedisConstants;
+import jiezhang.constant.RedisConstants;
 
 import javax.servlet.jsp.JspException;
 import java.util.LinkedList;

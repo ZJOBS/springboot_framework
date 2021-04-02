@@ -1,8 +1,8 @@
 package jiezhang.tag.web;
 
 import com.alibaba.fastjson.JSONArray;
-import jiezhang.base.constant.BaseConstants;
-import jiezhang.base.constant.RedisConstants;
+import jiezhang.constant.BaseConstants;
+import jiezhang.constant.RedisConstants;
 import jiezhang.entity.UAI;
 import org.springframework.stereotype.Component;
 import jiezhang.tag.base.AbstractWebUiTag;
