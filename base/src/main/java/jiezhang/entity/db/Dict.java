@@ -14,6 +14,7 @@ import lombok.Data;
 @TableName(name = "system_dictionary")
 @Data
 public class Dict extends BaseEntity {
+
     @Id
     private String dictId;
     private String parentId;
