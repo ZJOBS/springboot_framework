@@ -1,17 +1,21 @@
 package jiezhang.mapper;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.collection.CollectionUtil;
+import cn.hutool.core.util.ArrayUtil;
 import jiezhang.annotation.Id;
 import jiezhang.annotation.LogicDelete;
 import jiezhang.annotation.State;
 import jiezhang.annotation.TableName;
 import jiezhang.entity.BaseEntity;
 import jiezhang.utils.DataConversionUtil;
-import org.springframework.util.StringUtils;
+import org.apache.ibatis.jdbc.SQL;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * mybatis 模板
@@ -22,87 +26,44 @@ import java.util.*;
  * @return
  */
 public class MybatisCRUDTemplate<T extends BaseEntity> {
+    public static final String start = "#{";
+
+    public static final String end = "}";
 
     /**
-     * 生成insert语句
+     * insert
      *
-     * @param
+     * @param obj
      * @return java.lang.String
      * @author ZhangJie
      * @description
      * @date 3:11 下午 2020/3/26
      */
-    public String generateInsertSql(T obj) throws IllegalAccessException {
-        StringBuffer sql = new StringBuffer();
-        obj.getClass().getAnnotation(TableName.class);
-        sql.append("INSERT INTO ")
-                .append(obj.getClass().getAnnotation(TableName.class).name())
-                .append("(");
-
-        StringBuffer cols = new StringBuffer();
-        StringBuffer values = new StringBuffer().append("(");
-
+    public String insertEntity(T obj) throws IllegalAccessException {
         Field[] fields = obj.getClass().getDeclaredFields();
+        List<String> columns = new ArrayList<>();
+        List<String> values = new ArrayList<>();
         for (Field field : fields) {
             field.setAccessible(true);
-            String name = field.getName();
+            String columnName = DataConversionUtil.underline(field.getName());
             Object o = field.get(obj);
-            name = DataConversionUtil.underline(name);
-            if (StringUtils.isEmpty(o)) {
+            if (o == null) {
                 continue;
             }
-            if (field.getType() == String.class) {
-                //String类别
-                cols.append(" ").append(name).append(",");
-                values.append(" ").append("'").append(o).append("'").append(",");
-            } else {
-                //驼峰转下划线
-                cols.append(" ").append(name).append(",");
-                values.append(" ").append(o).append(",");
-            }
-
+            columns.add(columnName);
+            values.add(new StringBuffer(start).append(field.getName()).append(end).toString());
         }
-        cols.deleteCharAt(cols.length() - 1);
-        values.deleteCharAt(values.length() - 1);
-        cols.append(")");
-        values.append(")");
-        sql.append(cols).append("VALUE").append(values);
-        return sql.toString();
+        return new SQL() {
+            {
+                INSERT_INTO(obj.getClass().getAnnotation(TableName.class).name());
+                INTO_COLUMNS(ArrayUtil.toArray(columns, String.class));
+                INTO_VALUES(ArrayUtil.toArray(values, String.class));
+            }
+        }.toString();
     }
 
     /**
-     * @param obj
-     * @return java.lang.String
-     * @author ZhangJie
-     * @description
-     * @date 4:14 下午 2020/3/26
-     */
-    public String generateDeleteByIdSql(T obj) throws IllegalAccessException {
-        StringBuffer sql = new StringBuffer();
-        sql.append("delete from ")
-                .append(obj.getClass().getAnnotation(TableName.class).name())
-                .append(" where ");
-        StringBuffer column = new StringBuffer(), value = new StringBuffer();
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            if (field.isAnnotationPresent(Id.class)) {
-                Object o = field.get(obj);
-                column.append(DataConversionUtil.underline(field.getName()));
-                if (field.getType() == String.class) {
-                    //String类别
-                    value.append("'").append(o).append("'");
-                } else {
-                    value.append(o);
-                }
-            }
-        }
-        sql.append(column).append(" = ").append(value);
-        return sql.toString();
-    }
-
-    /**
-     * 更新所有字段(待测)
+     * 通过Id删除
      *
      * @param obj
      * @return java.lang.String
@@ -110,47 +71,46 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @description
      * @date 4:14 下午 2020/3/26
      */
-    public String generateUpdateAllFiledByIdSql(T obj) throws IllegalAccessException {
-        StringBuffer sql = new StringBuffer();
-        sql.append("update")
-                .append(obj.getClass().getAnnotation(TableName.class).name())
-                .append(" set ");
-        StringBuffer column = new StringBuffer(), where = new StringBuffer(" where ");
-        Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            String fileName = DataConversionUtil.underline(field.getName());
-            Object o = field.get(obj);
-            if (field.isAnnotationPresent(Id.class)) {
-                where.append(fileName).append(" = ");
-                if (field.getType() == String.class) {
-                    //String类别
-                    where.append("'").append(o).append("'");
-                } else if (field.getType() == Date.class) {
-                    throw new IllegalAccessException("请不要使用Date类型，换用LocalDate或LocalDateTime。");
-                } else {
-                    where.append(o);
+    public String deleteById(T obj) throws IllegalAccessException {
+        return new SQL() {{
+            Field[] fields = obj.getClass().getDeclaredFields();
+            DELETE_FROM(obj.getClass().getAnnotation(TableName.class).name());
+            String column = null;
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String fileName = DataConversionUtil.underline(field.getName());
+                if (field.isAnnotationPresent(Id.class)) {
+                    column = new StringBuffer().append(fileName).append("=").append(start).append(field.getName()).append(end).toString();
                 }
-            } else {
-                if (o == null) {
-                    column.append(fileName).append(" = ").append(o);
-                }
-                if (field.getType() == String.class) {
-                    //String类别
-                    column.append(fileName).append(" = ").append("'").append(o).append("'");
-                } else if (field.getType() == Date.class) {
-                    throw new IllegalAccessException("请不要使用Date类型，换用LocalDate或LocalDateTime。");
-                } else {
-                    column.append(o);
-                }
-                column.append(",");
             }
-        }
-        //去除最后一个逗号
-        column.deleteCharAt(column.length() - 1);
-        sql.append(column);
-        sql.append(where);
-        return sql.toString();
+            WHERE(column);
+        }}.toString();
+    }
+
+
+    /**
+     * 通过Id列表 批量删除
+     *
+     * @param list
+     * @return java.lang.String
+     * @author ZhangJie
+     * @description
+     * @date 12:04 下午 2020/12/10
+     */
+    public String deleteByIdList(Class clazz, List<Integer> list) throws IllegalAccessException {
+        return new SQL() {{
+            Field[] fields = clazz.getDeclaredFields();
+            TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
+            DELETE_FROM(tableName.name());
+            String column = null;
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String fileName = DataConversionUtil.underline(field.getName());
+                if (field.isAnnotationPresent(Id.class)) {
+                    WHERE(new StringBuffer().append(fileName).append("in(").append(CollectionUtil.join(list, ",")).append(")").toString());
+                }
+            }
+        }}.toString();
     }
 
     /**
@@ -162,88 +122,31 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @description
      * @date 4:14 下午 2020/3/26
      */
-    public String generateUpdateNotNullFiledByIdSql(T obj) throws IllegalAccessException {
-        StringBuffer sql = new StringBuffer();
-        sql.append("update ")
-                .append(obj.getClass().getAnnotation(TableName.class).name())
-                .append(" set ");
-        StringBuffer column = new StringBuffer(), where = new StringBuffer(" where ");
+    public String updateEntityNotNulById(T obj) throws IllegalAccessException {
         Field[] fields = obj.getClass().getDeclaredFields();
-        for (Field field : fields) {
-            field.setAccessible(true);
-            String fileName = DataConversionUtil.underline(field.getName());
-            Object o = field.get(obj);
-            if (o == null) {
-                continue;
-            }
-            if (field.isAnnotationPresent(Id.class)) {
-                where.append(fileName).append(" = ");
-                if (field.getType() == String.class) {
-                    //String类别
-                    where.append("'").append(o).append("'");
-                } else if (field.getType() == Date.class) {
-                    throw new IllegalAccessException("请不要使用Date类型，换用LocalDate或LocalDateTime。");
-                } else {
-                    where.append(o);
+        return new SQL() {
+            {
+                UPDATE(obj.getClass().getAnnotation(TableName.class).name());
+                for (Field field : fields) {
+                    field.setAccessible(true);
+                    String fileName = DataConversionUtil.underline(field.getName());
+                    Object o = field.get(obj);
+                    if (o == null) {
+                        continue;
+                    }
+                    StringBuffer buffer = new StringBuffer();
+                    if (field.isAnnotationPresent(Id.class)) {
+                        WHERE(buffer.append(fileName).append("=").append(start).append(field.getName()).append(end).toString());
+                    } else {
+                        SET(buffer.append(fileName).append(start).append(field.getName()).append(end).toString());
+                    }
                 }
-            } else {
-                if (field.getType() == String.class) {
-                    //String类别
-                    column.append(fileName).append(" = ").append("'").append(o).append("'");
-                } else if (field.getType() == Date.class) {
-                    throw new IllegalAccessException("请不要使用Date类型，换用LocalDate或LocalDateTime。");
-                } else {
-                    column.append(fileName).append(" = ").append(o);
-                }
-                column.append(",");
             }
-        }
-        //去除最后一个逗号
-        column.deleteCharAt(column.length() - 1);
-        sql.append(column);
-        sql.append(where);
-        return sql.toString();
+        }.toString();
     }
 
     /**
-     * 通过Id列表 批量删除
-     *
-     * @param list
-     * @return java.lang.String
-     * @author ZhangJie
-     * @description
-     * @date 12:04 下午 2020/12/10
-     */
-    public String generateDeleteByIdListSql(Class clazz, List<Integer> list) throws IllegalAccessException {
-        if (CollUtil.isEmpty(list)) {
-            throw new IllegalAccessException("ids不允许为空");
-        }
-        StringBuffer sql = new StringBuffer();
-        Annotation annotation = clazz.getAnnotation(TableName.class);
-        TableName tableName = (TableName) annotation;
-        // 获取强 转之后类上的方法名字
-        LogicDelete logicDelete = (LogicDelete) clazz.getAnnotation(LogicDelete.class);
-        sql.append("UPDATE ").append(tableName.name()).append(" SET deleted = ").append(logicDelete.deleted()).append(" where ");
-        StringBuffer column = new StringBuffer(), value = new StringBuffer();
-        List<Field> fields = getAllFiled(clazz);
-        for (Field field : fields) {
-            field.setAccessible(true);
-            if (field.isAnnotationPresent(Id.class)) {
-                column.append(DataConversionUtil.underline(field.getName())).append(" in (");
-            }
-        }
-        for (long l : list) {
-            column.append(l).append(",");
-        }
-        column.deleteCharAt(column.length() - 1);
-        column.append(")");
-        sql.append(column);
-        System.out.println(sql);
-        return sql.toString();
-    }
-
-    /**
-     * 启用,使用
+     * 启用（待测）
      *
      * @param clazz
      * @param id
@@ -252,32 +155,26 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @description
      * @date 9:51 上午 2020/12/17
      */
-    public String generateOpenById(Class clazz, Object id) {
-        StringBuffer sql = new StringBuffer();
-        TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
-        sql.append("update ").append(tableName).append(" ");
-        State state = (State) clazz.getAnnotation(State.class);
-        StringBuffer set = new StringBuffer(" set ");
-        StringBuffer where = new StringBuffer(" where ");
-
-        List<Field> fields = getAllFiled(clazz);
-        for (Field field : fields) {
-            field.setAccessible(true);
-
-            if (field.isAnnotationPresent(State.class)) {
-                set.append(DataConversionUtil.underline(field.getName())).append(" = ").append(state.openValue()).append(" ");
+    public String openById(Class clazz, Object id) {
+        Field[] fields = clazz.getClass().getDeclaredFields();
+        return new SQL() {{
+            TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
+            State state = (State) clazz.getAnnotation(State.class);
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String fileName = DataConversionUtil.underline(field.getName());
+                StringBuffer buffer = new StringBuffer();
+                if (field.isAnnotationPresent(State.class)) {
+                    WHERE(buffer.append(fileName).append("=").append(start).append(field.getName()).append(end).toString());
+                } else {
+                    SET(buffer.append(fileName).append(start).append(state.openValue()).append(end).toString());
+                }
             }
-            if (field.isAnnotationPresent(Id.class)) {
-                where.append(DataConversionUtil.underline(field.getName())).append(" = ").append(id).append(" ");
-            }
-        }
-        sql.append(set).append(where);
-        System.out.println(sql);
-        return sql.toString();
+        }}.toString();
     }
 
     /**
-     * 禁用
+     * 禁用(禁用)
      *
      * @param clazz
      * @param id
@@ -286,27 +183,24 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @description
      * @date 9:51 上午 2020/12/17
      */
-    public String generateCloseById(Class clazz, Object id) {
-        StringBuffer sql = new StringBuffer();
-        TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
-        sql.append("update ").append(tableName).append(" ");
-        State state = (State) clazz.getAnnotation(State.class);
-        StringBuffer set = new StringBuffer(" set ");
-        StringBuffer where = new StringBuffer(" where ");
-        List<Field> fields = getAllFiled(clazz);
-        for (Field field : fields) {
-            field.setAccessible(true);
-            if (field.isAnnotationPresent(State.class)) {
-                set.append(DataConversionUtil.underline(field.getName())).append(" = ").append(state.closeValue()).append(" ");
+    public String closeById(Class clazz, Object id) {
+        Field[] fields = clazz.getClass().getDeclaredFields();
+        return new SQL() {{
+            TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
+            State state = (State) clazz.getAnnotation(State.class);
+            for (Field field : fields) {
+                field.setAccessible(true);
+                String fileName = DataConversionUtil.underline(field.getName());
+                StringBuffer buffer = new StringBuffer();
+                if (field.isAnnotationPresent(State.class)) {
+                    WHERE(buffer.append(fileName).append("=").append(start).append(field.getName()).append(end).toString());
+                } else {
+                    SET(buffer.append(fileName).append(start).append(state.closeValue()).append(end).toString());
+                }
             }
-            if (field.isAnnotationPresent(Id.class)) {
-                where.append(DataConversionUtil.underline(field.getName())).append(" = ").append(id).append(" ");
-            }
-        }
-        sql.append(set).append(where);
-        System.out.println(sql);
-        return sql.toString();
+        }}.toString();
     }
+
 
     /**
      * 通过类获取所有的字段

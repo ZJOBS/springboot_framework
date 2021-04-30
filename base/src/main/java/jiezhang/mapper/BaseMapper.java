@@ -30,7 +30,7 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @description
      * @date 3:37 下午 2020/3/26
      */
-    @InsertProvider(type = MybatisCRUDTemplate.class, method = "generateInsertSql")
+    @InsertProvider(type = MybatisCRUDTemplate.class, method = "insertEntity")
     public int insertEntity(T t);
 
     /**
@@ -40,8 +40,20 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @return
      * @throws E
      */
-    @InsertProvider(type = MybatisCRUDTemplate.class, method = "generateDeleteByIdSql")
+    @InsertProvider(type = MybatisCRUDTemplate.class, method = "deleteById")
     public int deleteById(T t) throws E;
+
+    /**
+     * 通过Id更新非null字段
+     *
+     * @param t
+     * @return int
+     * @author ZhangJie
+     * @description
+     * @date 2:20 下午 2021/4/30
+     */
+    @InsertProvider(type = MybatisCRUDTemplate.class, method = "updateEntityNotNulById")
+    public int updateEntityNotNulById(T t);
 
     /**
      * 改
@@ -50,7 +62,7 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @return
      * @throws E
      */
-    public int updateEntity(Map<String, Object> parameter) throws E;
+    public  int updateEntity(Map<String, Object> parameter) throws E;
 
     /**
      * 查询一条数据
