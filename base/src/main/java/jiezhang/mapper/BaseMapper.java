@@ -53,7 +53,7 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @date 2:20 下午 2021/4/30
      */
     @InsertProvider(type = MybatisCRUDTemplate.class, method = "updateEntityNotNulById")
-    public int updateEntityNotNulById(T t);
+    public int updateEntityNotNulById(T t) throws E;
 
     /**
      * 改
@@ -62,7 +62,7 @@ public interface BaseMapper<T extends BaseEntity, E extends Exception> {
      * @return
      * @throws E
      */
-    public  int updateEntity(Map<String, Object> parameter) throws E;
+    public int updateEntity(Map<String, Object> parameter) throws E;
 
     /**
      * 查询一条数据

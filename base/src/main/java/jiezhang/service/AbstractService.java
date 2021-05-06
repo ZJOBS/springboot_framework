@@ -49,7 +49,6 @@ public abstract class AbstractService<T extends BaseEntity, D extends BaseMapper
     public int removeEntity(T entity) throws Exception {
         Object object = entity.gainKeyValue();
         if (object == null) {
-            System.out.println("数据未null");
             throw new Exception("没有ID");
         }
         return mapper.deleteById(entity);
@@ -58,7 +57,7 @@ public abstract class AbstractService<T extends BaseEntity, D extends BaseMapper
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public int modifyEntity(T entity) throws Exception {
-        return mapper.updateEntity(entity.toMap());
+        return mapper.updateEntityNotNulById(entity);
     }
 
     @Override

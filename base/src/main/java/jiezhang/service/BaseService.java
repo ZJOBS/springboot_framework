@@ -12,7 +12,7 @@ import java.util.Map;
  * @author jiezhang
  * @date 2017/6/13
  */
-public abstract interface BaseService<T extends BaseEntity, E extends Exception> {
+public interface BaseService<T extends BaseEntity, E extends Exception> {
 
     /**
      * 添加

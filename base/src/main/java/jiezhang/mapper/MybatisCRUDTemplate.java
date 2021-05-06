@@ -40,7 +40,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @date 3:11 下午 2020/3/26
      */
     public String insertEntity(T obj) throws IllegalAccessException {
-        Field[] fields = obj.getClass().getDeclaredFields();
+        List<Field> fields = getAllFiled(obj.getClass());
         List<String> columns = new ArrayList<>();
         List<String> values = new ArrayList<>();
         for (Field field : fields) {
@@ -73,7 +73,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      */
     public String deleteById(T obj) throws IllegalAccessException {
         return new SQL() {{
-            Field[] fields = obj.getClass().getDeclaredFields();
+            List<Field> fields = getAllFiled(obj.getClass());
             DELETE_FROM(obj.getClass().getAnnotation(TableName.class).name());
             String column = null;
             for (Field field : fields) {
@@ -123,7 +123,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @date 4:14 下午 2020/3/26
      */
     public String updateEntityNotNulById(T obj) throws IllegalAccessException {
-        Field[] fields = obj.getClass().getDeclaredFields();
+        List<Field> fields = getAllFiled(obj.getClass());
         return new SQL() {
             {
                 UPDATE(obj.getClass().getAnnotation(TableName.class).name());
@@ -156,7 +156,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @date 9:51 上午 2020/12/17
      */
     public String openById(Class clazz, Object id) {
-        Field[] fields = clazz.getClass().getDeclaredFields();
+        List<Field> fields = getAllFiled(clazz);
         return new SQL() {{
             TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
             State state = (State) clazz.getAnnotation(State.class);
@@ -184,7 +184,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
      * @date 9:51 上午 2020/12/17
      */
     public String closeById(Class clazz, Object id) {
-        Field[] fields = clazz.getClass().getDeclaredFields();
+       List<Field> fields = getAllFiled(clazz);
         return new SQL() {{
             TableName tableName = (TableName) clazz.getAnnotation(TableName.class);
             State state = (State) clazz.getAnnotation(State.class);
@@ -203,7 +203,7 @@ public class MybatisCRUDTemplate<T extends BaseEntity> {
 
 
     /**
-     * 通过类获取所有的字段
+     * 通过类获取所有的字段，包含父类字段
      *
      * @param clazz
      * @return

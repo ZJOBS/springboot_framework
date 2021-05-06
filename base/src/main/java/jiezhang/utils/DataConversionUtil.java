@@ -267,7 +267,7 @@ public class DataConversionUtil {
     // }
     //
     // public static void convert(JsonObject json, Object obj) {
-    // Field[] fields = obj.getClass().getDeclaredFields();
+    // List<Field> fields = getAllFiled(obj.getClass());
     // for (int i = 0; i < fields.length; i++) {
     // Field field = fields[i];
     // String name = field.getName();
