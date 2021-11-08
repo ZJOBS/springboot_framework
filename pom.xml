@@ -18,6 +18,7 @@
 
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <alibaba.nacos.version>2.2.1.RELEASE</alibaba.nacos.version>
+        <alibaba.sentinel.version>2.2.1.RELEASE</alibaba.sentinel.version>
         <spring-loaded.version>1.2.8.RELEASE</spring-loaded.version>
         <fast-json.version>1.2.25</fast-json.version>
         <hutool.version>5.2.4</hutool.version>
@@ -31,7 +32,6 @@
         <baidu.version>4.12.0</baidu.version>
         <JieZhang.version>0.0.1-SNAPSHOT</JieZhang.version>
         <lombck.version>1.18.12</lombck.version>
-
         <!--1.2.66-->
     </properties>
     <modules>
@@ -270,14 +270,18 @@
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${alibaba.nacos.version}</version>
             </dependency>
-
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
+<!--                <version>${alibaba.sentinel.version}</version>-->
+<!--            </dependency>-->
 
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
-            <!--  配置    spring-boot-devtools和springloaded 实现热部署  start     -->
+            <!--  配置spring-boot-devtools和springloaded 实现热部署  start     -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -286,7 +290,7 @@
                     <addResources>true</addResources>
                 </configuration>
             </plugin>
-            <!--  配置    spring-boot-devtools和springloaded 实现热部署  end      -->
+            <!--  配置spring-boot-devtools和springloaded 实现热部署  end      -->
         </plugins>
     </build>
 </project>

@@ -7,6 +7,10 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
@@ -15,7 +19,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class ConsoleApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(ConsoleApplication.class, args);
         System.out.println("启动完成");
     }
+
+
 }

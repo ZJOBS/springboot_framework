@@ -22,4 +22,5 @@ public class Dict extends BaseEntity {
     private String code;
     private String value;
     private String name;
+    //需要增加一个顺序字段
 }
